@@ -1,0 +1,40 @@
+{
+  "name": "zendify",
+  "version": "1.0.0",
+  "description": "An mini platform for send tickets into Zendesk",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Garethderioth/zendify.git"
+  },
+  "keywords": [
+    "zendesk",
+    "auth0"
+  ],
+  "author": "Guillermo Rodas <garethderioth@gmail.com> (http://guillermorodas.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Garethderioth/zendify/issues"
+  },
+  "homepage": "https://github.com/Garethderioth/zendify#readme",
+  "devDependencies": {
+    "ava": "0.16.0",
+    "babel-core": "6.13.2",
+    "babel-eslint": "6.1.2",
+    "babel-loader": "6.2.4",
+    "css-loader": "0.23.1",
+    "eslint": "3.2.2",
+    "eslint-config-airbnb": "10.0.0",
+    "eslint-loader": "1.5.0",
+    "eslint-plugin-import": "1.12.0",
+    "eslint-plugin-jsx-a11y": "2.0.1",
+    "eslint-plugin-react": "6.0.0",
+    "nyc": "7.1.0",
+    "sass-loader": "4.0.0",
+    "style-loader": "0.13.1"
+  }
+}
