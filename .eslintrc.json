@@ -10,7 +10,8 @@
     "react"
   ],
   "rules": {
-    "arrow-body-style": 0,
-     "react/jsx-filename-extension": [1, { "extensions": [".js"] }]
+    "arrow-body-style": "off",
+    "react/jsx-filename-extension": "off",
+    "react/require-extension": "off",
   }
 }

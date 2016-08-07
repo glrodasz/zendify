@@ -1,7 +1,20 @@
+/* eslint-disable */
+import webpack from 'webpack';
+
 export default {
-  entry: './src/index.js',
+  entry: [
+    'webpack/hot/only-dev-server',
+    './src/index.js',
+  ],
   output: {
-    filename: 'dist/bundle.js',
+    path: './dist',
+    publicPath: '/dist/',
+    filename: 'bundle.js',
+  },
+  devServer: {
+    port: 3000,
+    hot: true,
+    inline: true,
   },
   module: {
     preLoaders: [
@@ -22,11 +35,15 @@ export default {
       },
       {
         test: /\.scss$/,
-        loader: 'style!css!sass',
+        exclude: /node_modules/,
+        loader: 'style!css?sourceMap!sass',
       },
     ],
     eslint: {
       configFile: './.eslintrc.json',
     },
   },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+  ],
 };
