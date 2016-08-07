@@ -1,7 +1,7 @@
 export default {
-  entry: './app/index.js',
+  entry: './src/index.js',
   output: {
-    filename: 'public/bundle.js'
+    filename: 'dist/bundle.js',
   },
   module: {
     preLoaders: [
@@ -9,7 +9,7 @@ export default {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'eslint',
-      }
+      },
     ],
     loaders: [
       {
@@ -17,17 +17,16 @@ export default {
         exclude: /node_modules/,
         loader: 'babel',
         query: {
-          presets: ['react', 'es2015', 'stage-0']
-        }
+          presets: ['react', 'es2015', 'stage-0'],
+        },
       },
       {
         test: /\.scss$/,
-        loader: 'style!css!sass'
-      }
+        loader: 'style!css!sass',
+      },
     ],
     eslint: {
       configFile: './.eslintrc.json',
-      emitWarning: true
-    }
-  }
-}
+    },
+  },
+};
