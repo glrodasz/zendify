@@ -1,8 +1,10 @@
 import React from 'react';
+import FormContainer from '../containers/FormContainer';
 
 const App = () => (
   <div className="App">
-    <h2>Hello World!</h2>
+    <h2>Zendify</h2>
+    <FormContainer />
   </div>
 );
 

@@ -13,6 +13,7 @@
     "arrow-body-style": "off",
     "import/no-extraneous-dependencies": "off",
     "react/jsx-filename-extension": "off",
+    "react/prefer-stateless-function": "off",
     "react/require-extension": "off"
   }
 }
