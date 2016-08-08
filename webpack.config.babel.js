@@ -1,4 +1,5 @@
 import webpack from 'webpack';
+import { PRODUCTION } from './src/utils/env';
 
 export default {
   entry: [
@@ -10,7 +11,7 @@ export default {
     publicPath: '/static/',
     filename: 'bundle.js',
   },
-  devtool: 'cheap-module-eval-source-map',
+  devtool: PRODUCTION ? 'cheap-module-source-map' : 'cheap-module-eval-source-map',
   devServer: {
     port: 3000,
     hot: true,
