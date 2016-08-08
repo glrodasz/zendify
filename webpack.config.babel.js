@@ -34,8 +34,7 @@ export default {
       },
       {
         test: /\.scss$/,
-        exclude: /node_modules/,
-        loader: 'style!css?sourceMap!sass',
+        loader: 'style!css?sourceMap!sass?sourceMap',
       },
     ],
     eslint: {

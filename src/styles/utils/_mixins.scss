@@ -1,0 +1,30 @@
+@mixin pseudo-button($color, $background) {
+  color: $color;
+  background: $background;
+
+  &:visited,
+  &:focus,
+  &:hover {
+    outline-width: 0;
+    background: mix($white, $background, 20%);
+    color: $color;
+    text-decoration: none;
+  }
+
+  &:active:focus,
+  &:active:hover,
+  &:active {
+    outline-width: 0;
+    background: mix($white, $background, 50%);
+    color: $color;
+    text-decoration: none;
+  }
+
+  &.disabled:hover,
+  &.disabled:focus {
+    outline-width: 0;
+    background: mix($white, $background, 60%);
+    color: $color;
+    text-decoration: none;
+  }
+}

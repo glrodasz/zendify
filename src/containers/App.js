@@ -1,10 +1,9 @@
 import React from 'react';
-import FormContainer from '../containers/FormContainer';
+import Ticket from '../containers/Ticket';
 
 const App = () => (
-  <div className="App">
-    <h2>Zendify</h2>
-    <FormContainer />
+  <div className="app">
+    <Ticket />
   </div>
 );
 

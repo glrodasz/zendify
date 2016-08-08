@@ -1,0 +1,31 @@
+.form__label {
+  display: inline-block;
+  margin: 20px 0 8px 1px;
+  color: $black;
+  font-size: 12px;
+  font-weight: bold;
+
+  .form--sucess & {
+    color: $nephritis;
+  }
+}
+
+.form__control {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid $alpha-onyx-dark;
+  border-radius: 4px;
+  color: $black;
+  font-size: 14px;
+
+  &:active:focus,
+  &:active,
+  &:focus {
+    border-color: $seagull;
+    outline-width: 0;
+  }
+}
+
+.form__submit {
+  margin: 20px 0 10px;
+}

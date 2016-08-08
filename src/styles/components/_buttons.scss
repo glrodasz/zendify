@@ -1,0 +1,13 @@
+.button {
+  padding: 12px 40px;
+  border: 1px solid $alpha-onyx-light;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+
+  @include pseudo-button($black, $silver);
+}
+
+.button--sucess {
+  @include pseudo-button($white, $emerald);
+}

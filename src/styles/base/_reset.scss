@@ -1,6 +1,18 @@
+html,
 body {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
   margin: 0;
-  padding: 0;
-  background: $midnight-blue;
-  color: $clouds;
+  padding: 0 10px;
+  background: $white;
+  color: $black;
+  font-family: Arial;
+  font-size: 14px;
+}
+
+* {
+  box-sizing: border-box;
 }

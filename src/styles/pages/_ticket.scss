@@ -1,0 +1,15 @@
+.ticket {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 25px 30px 20px;
+  border: 1p solid $alpha-onyx-light;
+  border-radius: 2px;
+  background: $clouds;
+  box-shadow: $shadow;
+}
+
+.ticket__title {
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba($nephritis, 0.8);
+  color: $nephritis;
+}
