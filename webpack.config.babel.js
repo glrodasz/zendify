@@ -10,6 +10,7 @@ export default {
     publicPath: '/static/',
     filename: 'bundle.js',
   },
+  devtool: 'cheap-module-eval-source-map',
   devServer: {
     port: 3000,
     hot: true,
@@ -27,10 +28,7 @@ export default {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          presets: ['react', 'es2015', 'stage-0'],
-        },
+        loader: 'react-hot!babel',
       },
       {
         test: /\.scss$/,
