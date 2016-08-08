@@ -11,7 +11,8 @@
   ],
   "rules": {
     "arrow-body-style": "off",
+    "import/no-extraneous-dependencies": "off",
     "react/jsx-filename-extension": "off",
-    "react/require-extension": "off",
+    "react/require-extension": "off"
   }
 }

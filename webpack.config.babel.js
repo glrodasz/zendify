@@ -1,4 +1,3 @@
-/* eslint-disable */
 import webpack from 'webpack';
 
 export default {
@@ -8,7 +7,7 @@ export default {
   ],
   output: {
     path: './dist',
-    publicPath: '/dist/',
+    publicPath: '/static/',
     filename: 'bundle.js',
   },
   devServer: {
