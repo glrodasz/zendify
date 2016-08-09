@@ -6,6 +6,9 @@ import { submitTicket } from '../actions';
 class Ticket extends Component {
   static propTypes = {
     submitTicket: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool,
+    showError: PropTypes.bool,
+    responseMessage: PropTypes.object,
   }
 
   constructor(props) {
@@ -19,10 +22,17 @@ class Ticket extends Component {
   }
 
   render() {
+    const { isLoading, showError, responseMessage } = this.props;
+
     return (
       <div className="ticket">
         <h2 className="ticket__title">Write your Zendesk ticket</h2>
-        <Form handleSubmit={this.handleSubmit} />
+        <Form
+          handleSubmit={this.handleSubmit}
+          isLoading={isLoading}
+          showError={showError}
+          responseMessage={responseMessage}
+        />
       </div>
     );
   }
@@ -31,7 +41,7 @@ class Ticket extends Component {
 const mapStateToProps = ({ isLoading, showError, successResponse, errorResponse }) => ({
   isLoading,
   showError,
-  response: showError ? errorResponse : successResponse,
+  responseMessage: showError ? errorResponse : successResponse,
 });
 
 export default connect(mapStateToProps, { submitTicket })(Ticket);

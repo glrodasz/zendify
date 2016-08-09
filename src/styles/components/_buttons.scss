@@ -13,6 +13,10 @@
   }
 }
 
-.button--sucess {
+.button--success {
+  @include pseudo-button($white, $emerald);
+}
+
+.button--error {
   @include pseudo-button($white, $emerald);
 }

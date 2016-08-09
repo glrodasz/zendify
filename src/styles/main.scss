@@ -1,8 +1,11 @@
 @import "~normalize-scss/sass/normalize";
 @import "~breakpoint-sass/stylesheets/breakpoint";
+@import "~spinkit/scss/spinners/7-three-bounce";
 
 @import "utils/variables";
 @import "utils/mixins";
+
+@import "vendors/spinner";
 
 @import "base/reset";
 @import "base/typography";
@@ -11,7 +14,6 @@
 @import "layout/forms";
 
 @import "components/buttons";
-@import "components/modal";
 
 @import "pages/home";
 @import "pages/ticket";

@@ -56,13 +56,16 @@
   },
   "dependencies": {
     "breakpoint-sass": "2.7.0",
+    "classnames": "2.2.5",
     "isomorphic-fetch": "2.2.1",
     "normalize-scss": "5.0.3",
+    "npm": "3.10.5",
     "react": "15.3.0",
     "react-dom": "15.3.0",
     "react-redux": "4.4.5",
     "redux": "3.5.2",
-    "redux-thunk": "2.1.0"
+    "redux-thunk": "2.1.0",
+    "spinkit": "1.2.5"
   },
   "ava": {
     "require": "babel-register",

@@ -1,8 +1,11 @@
-import React, { Component, PropTypes, findDOMNode } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { findDOMNode } from 'react-dom';
+import Button from './Button';
 
 class Form extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool,
   }
 
   constructor(props) {
@@ -25,8 +28,10 @@ class Form extends Component {
   }
 
   render() {
+    const { isLoading } = this.props;
+
     return (
-      <form className="form form--sucess" onSubmit={this.onSubmit}>
+      <form className="form form--success" onSubmit={this.onSubmit}>
         <div className="form__group">
           <label className="form__label" htmlFor="fullname">Name</label>
           <input className="form__control" ref="fullname" type="text" placeholder="Name" required autoFocus />
@@ -43,7 +48,7 @@ class Form extends Component {
           <label className="form__label" htmlFor="message">Message</label>
           <textarea className="form__control" ref="message" cols="30" rows="5" required />
         </div>
-        <button className="button button--block button--sucess form__submit" type="submit">Enviar</button>
+        <Button text="Send" isLoading={isLoading} type="success" className="form__submit" />
       </form>
     );
   }
