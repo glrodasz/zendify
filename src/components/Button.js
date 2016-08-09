@@ -39,7 +39,12 @@ class Button extends Component {
     const { isLoading, text } = this.props;
 
     return (
-      <button className={this.getClasses()} type="submit">{isLoading ? this.renderLoading() : text}</button>
+      <button
+        className={this.getClasses()}
+        type="submit"
+      >
+        {isLoading ? this.renderLoading() : text}
+      </button>
     );
   }
 

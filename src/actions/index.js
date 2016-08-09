@@ -5,7 +5,10 @@ export const SUBMIT_REQUEST = 'SUBMIT_REQUEST';
 export const submitRequest = () => ({ type: SUBMIT_REQUEST });
 
 export const SUBMIT_SUCCESS = 'SUBMIT_SUCCESS';
-export const submitSuccess = jsonResponse => ({ type: SUBMIT_SUCCESS, jsonResponse });
+export const submitSuccess = jsonResponse => ({
+  type: SUBMIT_SUCCESS,
+  jsonResponse,
+});
 
 export const SUBMIT_FAILURE = 'SUBMIT_FAILURE';
 export const submitFailure = error => ({ type: SUBMIT_FAILURE, error });

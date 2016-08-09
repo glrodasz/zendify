@@ -12,7 +12,7 @@
   "rules": {
     "arrow-body-style": "off",
     "import/no-extraneous-dependencies": "off",
-    "max-len": ["error", 120],
+    "max-len": ["warn", 80],
     "react/jsx-filename-extension": "off",
     "react/no-string-refs": "off",
     "react/prefer-stateless-function": "off",

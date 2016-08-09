@@ -38,7 +38,12 @@ class Ticket extends Component {
   }
 }
 
-const mapStateToProps = ({ isLoading, showError, successResponse, errorResponse }) => ({
+const mapStateToProps = ({
+  isLoading,
+  showError,
+  successResponse,
+  errorResponse,
+}) => ({
   isLoading,
   showError,
   responseMessage: showError ? errorResponse : successResponse,
