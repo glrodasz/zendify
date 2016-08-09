@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes, findDOMNode } from 'react';
 
 class Form extends Component {
   static propTypes = {
@@ -13,7 +13,14 @@ class Form extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    const data = {};
+
+    const data = {
+      name: findDOMNode(this.refs.fullname).value,
+      email: findDOMNode(this.refs.email).value,
+      subject: findDOMNode(this.refs.subject).value,
+      message: findDOMNode(this.refs.message).value,
+    };
+
     this.props.handleSubmit(data);
   }
 
@@ -21,8 +28,8 @@ class Form extends Component {
     return (
       <form className="form form--sucess" onSubmit={this.onSubmit}>
         <div className="form__group">
-          <label className="form__label" htmlFor="name">Name</label>
-          <input className="form__control" ref="name" type="text" placeholder="Name" required autoFocus />
+          <label className="form__label" htmlFor="fullname">Name</label>
+          <input className="form__control" ref="fullname" type="text" placeholder="Name" required autoFocus />
         </div>
         <div className="form__group">
           <label className="form__label" htmlFor="email">Email</label>

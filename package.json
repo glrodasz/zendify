@@ -55,6 +55,7 @@
     "webpack-dev-server": "1.14.1"
   },
   "dependencies": {
+    "breakpoint-sass": "2.7.0",
     "isomorphic-fetch": "2.2.1",
     "normalize-scss": "5.0.3",
     "react": "15.3.0",

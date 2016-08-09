@@ -1,4 +1,5 @@
 .button {
+  width: 100%;
   padding: 12px 55px;
   border: 1px solid $alpha-onyx-light;
   border-radius: 4px;
@@ -6,6 +7,10 @@
   font-weight: bold;
 
   @include pseudo-button($black, $silver);
+
+  @include breakpoint($medium) {
+    width: auto;
+  }
 }
 
 .button--sucess {

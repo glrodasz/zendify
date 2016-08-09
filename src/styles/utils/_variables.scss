@@ -16,3 +16,13 @@ $alpha-onyx-light: rgba($onyx, 0.1);
 
 // Shadow
 $shadow: 0 1px 3px 0 $alpha-onyx-light, 0 0 0 1px $alpha-onyx-light;
+
+// Breakpoints
+$screen-sm-min: 798px;
+$screen-md-min: 992px;
+$screen-lg-min: 1200px;
+
+// Media queries
+$small: min-width $screen-sm-min;
+$medium: min-width $screen-md-min;
+$large: min-width $screen-lg-min;
