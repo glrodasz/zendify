@@ -1,42 +1,20 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Form from '../components/Form';
 import { submitTicket } from '../actions';
 
-class Ticket extends Component {
-  static propTypes = {
-    submitTicket: PropTypes.func.isRequired,
-    isLoading: PropTypes.bool,
-    showError: PropTypes.bool,
-    responseMessage: PropTypes.object,
-  }
+const Ticket = (props) => (
+  <div className="ticket">
+    <h2 className="ticket__title">Write your Zendesk ticket</h2>
+    <Form {...props} />
+  </div>
+);
 
-  constructor(props) {
-    super(props);
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit(data) {
-    this.props.submitTicket(data);
-  }
-
-  render() {
-    const { isLoading, showError, responseMessage } = this.props;
-
-    return (
-      <div className="ticket">
-        <h2 className="ticket__title">Write your Zendesk ticket</h2>
-        <Form
-          handleSubmit={this.handleSubmit}
-          isLoading={isLoading}
-          showError={showError}
-          responseMessage={responseMessage}
-        />
-      </div>
-    );
-  }
-}
+Ticket.propTypes = {
+  isLoading: PropTypes.bool,
+  showError: PropTypes.bool,
+  responseMessage: PropTypes.object,
+};
 
 const mapStateToProps = ({
   isLoading,

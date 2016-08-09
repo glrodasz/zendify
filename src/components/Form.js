@@ -4,14 +4,14 @@ import Button from './Button';
 
 class Form extends Component {
   static propTypes = {
-    handleSubmit: PropTypes.func.isRequired,
+    submitTicket: PropTypes.func.isRequired,
     isLoading: PropTypes.bool,
   }
 
   constructor(props) {
     super(props);
 
-    this.inputsRefs = ['name', 'email', 'subject', 'message'];
+    this.inputsRefs = ['fullname', 'email', 'subject', 'message'];
 
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -23,7 +23,7 @@ class Form extends Component {
       inputRef => findDOMNode(this.refs[inputRef]).value
     );
 
-    this.props.handleSubmit(data);
+    this.props.submitTicket(data);
   }
 
   render() {

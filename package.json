@@ -58,11 +58,13 @@
     "breakpoint-sass": "2.7.0",
     "classnames": "2.2.5",
     "isomorphic-fetch": "2.2.1",
+    "joi-validation-strategy": "0.3.3",
     "normalize-scss": "5.0.3",
     "npm": "3.10.5",
     "react": "15.3.0",
     "react-dom": "15.3.0",
     "react-redux": "4.4.5",
+    "react-validation-mixin": "5.4.0",
     "redux": "3.5.2",
     "redux-thunk": "2.1.0",
     "spinkit": "1.2.5"

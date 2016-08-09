@@ -16,9 +16,7 @@ class Button extends Component {
     this.getClasses = this.getClasses.bind(this);
   }
 
-  getClasses() {
-    const { className, type } = this.props;
-
+  getClasses({ className, type }) {
     return classnames('button', className, {
       'button--success': type === 'success',
       'button--error': type === 'error',
@@ -40,7 +38,7 @@ class Button extends Component {
 
     return (
       <button
-        className={this.getClasses()}
+        className={this.getClasses(this.props)}
         type="submit"
       >
         {isLoading ? this.renderLoading() : text}
