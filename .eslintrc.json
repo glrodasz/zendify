@@ -14,6 +14,7 @@
     "import/no-extraneous-dependencies": "off",
     "max-len": ["error", 120],
     "react/jsx-filename-extension": "off",
+    "react/no-string-refs": "off",
     "react/prefer-stateless-function": "off",
     "react/require-extension": "off"
   }
