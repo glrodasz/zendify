@@ -7,7 +7,7 @@
     "node": "6.3.1"
   },
   "scripts": {
-    "build": "webpack -p",
+    "build": "webpack",
     "check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
     "commit": "git-cz",
     "cover": "nyc npm run test",
