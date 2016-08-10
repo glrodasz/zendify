@@ -55,7 +55,6 @@
     "sass-loader": "4.0.0",
     "style-loader": "0.13.1",
     "validate-commit-msg": "2.6.1",
-    "webpack": "1.13.1",
     "webpack-dev-server": "1.14.1"
   },
   "dependencies": {
@@ -73,7 +72,8 @@
     "react-validation-mixin": "5.4.0",
     "redux": "3.5.2",
     "redux-thunk": "2.1.0",
-    "spinkit": "1.2.5"
+    "spinkit": "1.2.5",
+    "webpack": "1.13.1"
   },
   "ava": {
     "require": "babel-register",
