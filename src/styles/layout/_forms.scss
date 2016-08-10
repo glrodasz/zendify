@@ -8,6 +8,10 @@
   .form--success & {
     color: $nephritis;
   }
+
+  .form__group--error & {
+    color: $alizarin;
+  }
 }
 
 .form__control {
@@ -19,14 +23,33 @@
   color: $black;
   font-size: 14px;
 
+  .form__group--error & {
+    border-color: rgba($alizarin, 0.5);
+  }
+
   &:active:focus,
   &:active,
   &:focus {
     border-color: $seagull;
     outline-width: 0;
+
+    .form__group--error & {
+      border-color: $alizarin;
+    }
   }
 }
 
 .form__submit {
   margin: 20px 0 10px;
+}
+
+.form__help-block {
+  display: inline-block;
+  margin: 10px 0 5px;
+  color: rgba($black, 0.6);
+  font-size: 12px;
+
+  .form__group--error & {
+    color: $alizarin;
+  }
 }

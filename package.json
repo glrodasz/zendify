@@ -58,9 +58,11 @@
     "breakpoint-sass": "2.7.0",
     "classnames": "2.2.5",
     "isomorphic-fetch": "2.2.1",
+    "joi": "9.0.4",
+    "joi-browser": "9.0.1",
     "joi-validation-strategy": "0.3.3",
+    "moment": "2.14.1",
     "normalize-scss": "5.0.3",
-    "npm": "3.10.5",
     "react": "15.3.0",
     "react-dom": "15.3.0",
     "react-redux": "4.4.5",
@@ -77,6 +79,9 @@
     "exclude": [
       "tests"
     ]
+  },
+  "browser": {
+    "joi": "joi-browser"
   },
   "config": {
     "commitizen": {

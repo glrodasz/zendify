@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 
 class Button extends Component {
   static propTypes = {
@@ -17,7 +17,7 @@ class Button extends Component {
   }
 
   getClasses({ className, type }) {
-    return classnames('button', className, {
+    return classNames('button', className, {
       'button--success': type === 'success',
       'button--error': type === 'error',
     });

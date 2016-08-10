@@ -1,76 +1,134 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
+import Joi from 'joi';
+import validation from 'react-validation-mixin';
+import strategy from 'joi-validation-strategy';
+import classNames from 'classnames';
 import Button from './Button';
 
 class Form extends Component {
   static propTypes = {
     submitTicket: PropTypes.func.isRequired,
+    handleValidation: PropTypes.func,
     isLoading: PropTypes.bool,
+    validate: PropTypes.func,
+    isValid: PropTypes.func,
+    getValidationMessages: PropTypes.func,
   }
 
   constructor(props) {
     super(props);
 
-    this.inputsRefs = ['fullname', 'email', 'subject', 'message'];
+    this.validatorTypes = {
+      name: Joi.string().required().label('Customer\'s name'),
+      email: Joi.string().email().required().label('Customer\'s email'),
+      subject: Joi.string().required().label('Ticket\'s subject'),
+      message: Joi.string().required().label('Ticket\'s message'),
+    };
 
+    this.getValidatorData = this.getValidatorData.bind(this);
+    this.renderHelpText = this.renderHelpText.bind(this);
+    this.getClasses = this.getClasses.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onSubmit(e) {
-    e.preventDefault();
+  componentDidMount() {
+    this.inputsRefs = Object.keys(this.refs);
+  }
 
-    const data = this.inputsRefs.map(
-      inputRef => findDOMNode(this.refs[inputRef]).value
+  onSubmit(event) {
+    event.preventDefault();
+
+    const onValidate = error => {
+      if (!error) {
+        this.props.submitTicket(this.getFormData());
+      }
+    };
+
+    this.props.validate(onValidate);
+  }
+
+  getClasses(field) {
+    return classNames({
+      form__group: true,
+      'form__group--error': !this.props.isValid(field),
+    });
+  }
+
+  getFormData() {
+    return this.inputsRefs.reduce((accumulator, current) => {
+      return Object.assign({}, accumulator, {
+        [current]: findDOMNode(this.refs[current]).value,
+      });
+    }, {});
+  }
+
+  getValidatorData() {
+    return this.getFormData();
+  }
+
+  renderHelpText(message) {
+    return (
+      <span className="form__help-block">
+        {message && message.length ? `${message.join(', ')}.` : ''}
+      </span>
     );
-
-    this.props.submitTicket(data);
   }
 
   render() {
     const { isLoading } = this.props;
 
     return (
-      <form className="form form--success" onSubmit={this.onSubmit}>
-        <div className="form__group">
-          <label className="form__label" htmlFor="fullname">Name</label>
+      <form className="form form--success" onSubmit={this.onSubmit} noValidate>
+        <div className={this.getClasses('name')}>
+          <label className="form__label" htmlFor="name">Name</label>
           <input
             className="form__control"
-            ref="fullname"
+            ref="name"
             type="text"
-            placeholder="Name"
+            placeholder="Customer's name"
             required
             autoFocus
+            onBlur={this.props.handleValidation('name')}
           />
+          {this.renderHelpText(this.props.getValidationMessages('name'))}
         </div>
-        <div className="form__group">
+        <div className={this.getClasses('email')}>
           <label className="form__label" htmlFor="email">Email</label>
           <input
             className="form__control"
             ref="email"
             type="email"
-            placeholder="Email"
+            placeholder="Customer's email"
             required
+            onBlur={this.props.handleValidation('email')}
           />
+          {this.renderHelpText(this.props.getValidationMessages('email'))}
         </div>
-        <div className="form__group">
+        <div className={this.getClasses('subject')}>
           <label className="form__label" htmlFor="subject">Subject</label>
           <input
             className="form__control"
             ref="subject"
             type="text"
-            placeholder="Subject"
+            placeholder="Ticket's subject"
             required
+            onBlur={this.props.handleValidation('subject')}
           />
+          {this.renderHelpText(this.props.getValidationMessages('subject'))}
         </div>
-        <div className="form__group">
+        <div className={this.getClasses('message')}>
           <label className="form__label" htmlFor="message">Message</label>
           <textarea
             className="form__control"
             ref="message"
             cols="30"
             rows="5"
+            placeholder="Ticket's message"
             required
+            onBlur={this.props.handleValidation('message')}
           />
+          {this.renderHelpText(this.props.getValidationMessages('message'))}
         </div>
         <Button
           isLoading={isLoading}
@@ -83,4 +141,4 @@ class Form extends Component {
   }
 }
 
-export default Form;
+export default validation(strategy)(Form);
