@@ -1,0 +1,23 @@
+.message {
+  display: inline-block;
+  width: 100%;
+  transition: opacity 2s;
+  font-size: 16px;
+  text-align: right;
+  opacity: 0;
+
+  @include breakpoint($medium) {
+    width: calc(100% - 190px);
+    margin-left: 10px;
+  }
+
+  &.message--success {
+    color: $nephritis;
+    opacity: 1;
+  }
+
+  &.message--error {
+    color: $alizarin;
+    opacity: 1;
+  }
+}

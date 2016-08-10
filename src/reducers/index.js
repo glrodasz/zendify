@@ -24,7 +24,7 @@ function submitTicket(state = { isLoading: false, showError: false }, action) {
         ...state,
         isLoading: false,
         showError: false,
-        successResponse: action.jsonResponse,
+        successResponse: action.response,
       };
     default:
       return state;

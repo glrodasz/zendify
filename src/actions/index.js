@@ -5,9 +5,9 @@ export const SUBMIT_REQUEST = 'SUBMIT_REQUEST';
 export const submitRequest = () => ({ type: SUBMIT_REQUEST });
 
 export const SUBMIT_SUCCESS = 'SUBMIT_SUCCESS';
-export const submitSuccess = jsonResponse => ({
+export const submitSuccess = response => ({
   type: SUBMIT_SUCCESS,
-  jsonResponse,
+  response,
 });
 
 export const SUBMIT_FAILURE = 'SUBMIT_FAILURE';
@@ -23,7 +23,7 @@ export const submitTicket = data => dispatch => {
     return fetch('https://api.example.com/submit', { method: 'post', body })
       .then(checkStatus)
       .then(response => response.json())
-      .then(json => dispatch(submitSuccess(json)))
-      .catch(error => dispatch(submitFailure(error)));
+      .then(json => dispatch(submitSuccess(json.statusText)))
+      .catch(error => dispatch(submitFailure(`${error.message}.`)));
   }, 1500);
 };

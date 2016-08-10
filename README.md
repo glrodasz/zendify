@@ -12,6 +12,7 @@ In order to develop install the dependencies with `npm i` and run `npm start` fo
 * Integrate with Auth0
 * Integrate with Zendesk API using HapiJS
 * Write JSDocs
+* Order alphabetical the propTypes of the components
 * Write tests
 * Support 100% coverage
 * Create Continuos integration

@@ -12,8 +12,8 @@ const Ticket = (props) => (
 
 Ticket.propTypes = {
   isLoading: PropTypes.bool,
-  showError: PropTypes.bool,
   responseMessage: PropTypes.object,
+  showError: PropTypes.bool,
 };
 
 const mapStateToProps = ({

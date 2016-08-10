@@ -5,6 +5,7 @@ import validation from 'react-validation-mixin';
 import strategy from 'joi-validation-strategy';
 import classNames from 'classnames';
 import Button from './Button';
+import Message from './Message';
 
 class Form extends Component {
   static propTypes = {
@@ -12,6 +13,7 @@ class Form extends Component {
     handleValidation: PropTypes.func,
     isLoading: PropTypes.bool,
     isValid: PropTypes.func,
+    responseMessage: PropTypes.string,
     showError: PropTypes.bool,
     submitTicket: PropTypes.func.isRequired,
     validate: PropTypes.func,
@@ -77,7 +79,7 @@ class Form extends Component {
   }
 
   render() {
-    const { isLoading, showError } = this.props;
+    const { isLoading, showError, responseMessage } = this.props;
 
     const className = classNames('form', 'form--success', {
       'form--loading': isLoading,
@@ -140,6 +142,10 @@ class Form extends Component {
           text={showError ? 'Try again' : 'Send'}
           type={showError ? 'error' : 'success'}
           className="form__submit"
+        />
+        <Message
+          text={responseMessage}
+          showError={showError}
         />
       </form>
     );
