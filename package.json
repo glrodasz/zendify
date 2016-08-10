@@ -12,7 +12,6 @@
     "commit": "git-cz",
     "cover": "nyc npm run test",
     "lint": "eslint src",
-    "postinstall": "npm run build",
     "start": "webpack-dev-server",
     "test:watch": "ava 'tests/**/*.test.js' --verbose --watch",
     "test": "ava 'tests/**/*.test.js' --verbose"
@@ -55,12 +54,12 @@
     "sass-loader": "4.0.0",
     "style-loader": "0.13.1",
     "validate-commit-msg": "2.6.1",
-    "webpack-dev-server": "1.14.1"
+    "webpack-dev-server": "1.14.1",
+    "webpack": "1.13.1"
   },
   "dependencies": {
     "breakpoint-sass": "2.7.0",
     "classnames": "2.2.5",
-    "express": "4.14.0",
     "isomorphic-fetch": "2.2.1",
     "joi": "9.0.4",
     "joi-browser": "9.0.1",
@@ -73,8 +72,7 @@
     "react-validation-mixin": "5.4.0",
     "redux": "3.5.2",
     "redux-thunk": "2.1.0",
-    "spinkit": "1.2.5",
-    "webpack": "1.13.1"
+    "spinkit": "1.2.5"
   },
   "ava": {
     "require": "babel-register",
