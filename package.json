@@ -4,11 +4,12 @@
   "description": "An mini platform for send tickets into Zendesk",
   "main": "./src/index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack -p",
     "check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
     "commit": "git-cz",
     "cover": "nyc npm run test",
     "lint": "eslint src",
+    "postinstall": "npm run build",
     "start": "webpack-dev-server",
     "test:watch": "ava 'tests/**/*.test.js' --verbose --watch",
     "test": "ava 'tests/**/*.test.js' --verbose"
