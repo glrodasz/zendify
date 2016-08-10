@@ -1,3 +1,4 @@
+import path from 'path';
 import webpack from 'webpack';
 import { PRODUCTION } from './src/utils/env';
 
@@ -7,8 +8,8 @@ export default {
     './src/index.js',
   ],
   output: {
-    path: './dist',
-    publicPath: '/static/',
+    path: path.join(__dirname, 'dist'),
+    publicPath: '/dist/',
     filename: 'bundle.js',
   },
   devtool: PRODUCTION
