@@ -10,11 +10,10 @@ export default function configureStore(preloadedState) {
     applyMiddleware(thunk, createLogger()),
   );
 
+  // Enable Webpack Hot Module Replacement for reducers
   if (module.hot) {
-    // Enable Webpack Hot Module Replacement for reducers
     module.hot.accept('../reducers', () => {
       const nextRootReducer = require('../reducers').default; // eslint-disable-line
-
       store.replaceReducer(nextRootReducer);
     });
   }
