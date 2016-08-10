@@ -2,7 +2,7 @@
   "name": "zendify",
   "version": "1.0.0",
   "description": "An mini platform for send tickets into Zendesk",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
     "build": "webpack",
     "check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
