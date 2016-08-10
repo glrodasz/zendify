@@ -1,6 +1,6 @@
 .button {
   width: 100%;
-  padding: 12px 55px;
+  padding: 12px 20px;
   border: 1px solid $alpha-onyx-light;
   border-radius: 4px;
   font-size: 12px;
@@ -9,7 +9,7 @@
   @include pseudo-button($black, $silver);
 
   @include breakpoint($medium) {
-    width: auto;
+    width: 180px;
   }
 }
 
@@ -18,5 +18,5 @@
 }
 
 .button--error {
-  @include pseudo-button($white, $emerald);
+  @include pseudo-button($white, $alizarin);
 }

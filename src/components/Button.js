@@ -3,9 +3,9 @@ import classNames from 'classnames';
 
 class Button extends Component {
   static propTypes = {
+    className: PropTypes.string,
     isLoading: PropTypes.bool,
     text: PropTypes.string,
-    className: PropTypes.string,
     type: PropTypes.string,
   }
 
@@ -16,10 +16,10 @@ class Button extends Component {
     this.getClasses = this.getClasses.bind(this);
   }
 
-  getClasses({ className, type }) {
+  getClasses({ isLoading, className, type }) {
     return classNames('button', className, {
-      'button--success': type === 'success',
-      'button--error': type === 'error',
+      'button--success': !isLoading && type === 'success',
+      'button--error': !isLoading && type === 'error',
     });
   }
 
@@ -40,12 +40,12 @@ class Button extends Component {
       <button
         className={this.getClasses(this.props)}
         type="submit"
+        disabled={isLoading}
       >
         {isLoading ? this.renderLoading() : text}
       </button>
     );
   }
-
 }
 
 export default Button;

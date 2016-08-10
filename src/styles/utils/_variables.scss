@@ -1,6 +1,6 @@
 // Colors
 $alizarin: #e74c3c;
-$black: #212121;
+$black: #3e3e3e;
 $clouds: #ecf0f1;
 $emerald: #2ecc71;
 $midnight-blue: #2c3e50;
@@ -12,18 +12,23 @@ $wet-asphalt: #34495e;
 $white: #f5f5f5;
 
 // Alpha Colors
-$alpha-onyx-dark: rgba($onyx, 0.2);
+$alpha-alizarin: rgba($alizarin, 0.5);
+$alpha-black-dark: rgba($black, 0.6);
+$alpha-black-light: rgba($black, 0.4);
+$alpha-nephritis: rgba($nephritis, 0.8);
 $alpha-onyx-light: rgba($onyx, 0.1);
+$alpha-onyx-dark: rgba($onyx, 0.2);
+$alpha-white: rgba($white, 0.8);
 
 // Shadow
 $shadow: 0 1px 3px 0 $alpha-onyx-light, 0 0 0 1px $alpha-onyx-light;
 
 // Breakpoints
-$screen-sm-min: 798px;
-$screen-md-min: 992px;
 $screen-lg-min: 1200px;
+$screen-md-min: 992px;
+$screen-sm-min: 798px;
 
 // Media queries
-$small: min-width $screen-sm-min;
-$medium: min-width $screen-md-min;
 $large: min-width $screen-lg-min;
+$medium: min-width $screen-md-min;
+$small: min-width $screen-sm-min;

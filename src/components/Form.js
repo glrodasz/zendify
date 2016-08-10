@@ -8,12 +8,13 @@ import Button from './Button';
 
 class Form extends Component {
   static propTypes = {
-    submitTicket: PropTypes.func.isRequired,
+    getValidationMessages: PropTypes.func,
     handleValidation: PropTypes.func,
     isLoading: PropTypes.bool,
-    validate: PropTypes.func,
     isValid: PropTypes.func,
-    getValidationMessages: PropTypes.func,
+    showError: PropTypes.bool,
+    submitTicket: PropTypes.func.isRequired,
+    validate: PropTypes.func,
   }
 
   constructor(props) {
@@ -76,10 +77,14 @@ class Form extends Component {
   }
 
   render() {
-    const { isLoading } = this.props;
+    const { isLoading, showError } = this.props;
+
+    const className = classNames('form', 'form--success', {
+      'form--loading': isLoading,
+    });
 
     return (
-      <form className="form form--success" onSubmit={this.onSubmit} noValidate>
+      <form className={className} onSubmit={this.onSubmit} noValidate>
         <div className={this.getClasses('name')}>
           <label className="form__label" htmlFor="name">Name</label>
           <input
@@ -132,8 +137,8 @@ class Form extends Component {
         </div>
         <Button
           isLoading={isLoading}
-          text="Send"
-          type="success"
+          text={showError ? 'Try again' : 'Send'}
+          type={showError ? 'error' : 'success'}
           className="form__submit"
         />
       </form>

@@ -18,9 +18,12 @@ export const submitTicket = data => dispatch => {
 
   const body = JSON.stringify(data);
 
-  return fetch('https://api.example.com/submit', { method: 'post', body })
-    .then(checkStatus)
-    .then(response => response.json())
-    .then(json => dispatch(submitSuccess(json)))
-    .catch(error => dispatch(submitFailure(error)));
+  // TODO: Remove the setTimeout it is just for testing before the integration.
+  setTimeout(() => {
+    return fetch('https://api.example.com/submit', { method: 'post', body })
+      .then(checkStatus)
+      .then(response => response.json())
+      .then(json => dispatch(submitSuccess(json)))
+      .catch(error => dispatch(submitFailure(error)));
+  }, 1500);
 };

@@ -19,12 +19,18 @@
   padding: 8px 12px;
   border: 1px solid $alpha-onyx-dark;
   border-radius: 4px;
-  background: rgba($white, 0.8);
+  background: $alpha-white;
   color: $black;
   font-size: 14px;
 
+  .form--loading & {
+    background: $alpha-onyx-light;
+    color: $alpha-black-light;
+    pointer-events: none;
+  }
+
   .form__group--error & {
-    border-color: rgba($alizarin, 0.5);
+    border-color: $alpha-alizarin;
   }
 
   &:active:focus,
@@ -46,8 +52,9 @@
 .form__help-block {
   display: inline-block;
   margin: 10px 0 5px;
-  color: rgba($black, 0.6);
+  color: $alpha-black-light;
   font-size: 12px;
+  font-style: italic;
 
   .form__group--error & {
     color: $alizarin;
