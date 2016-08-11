@@ -30,7 +30,7 @@ const goodOptions = {
 
 const server = new Hapi.Server();
 
-server.connection({ host: 'localhost', port: process.env.PORT || 5000 });
+server.connection({ port: process.env.PORT || 5000 });
 
 server.register([{
   register: require('good'), // eslint-disable-line global-require
