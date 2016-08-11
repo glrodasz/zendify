@@ -5,20 +5,15 @@ import { PRODUCTION } from './src/utils/env';
 const entry = () => (
   PRODUCTION
     ? ['./src/index.js']
-    : [
-      'webpack/hot/only-dev-server',
-      './src/index.js',
-    ]
+    : ['webpack/hot/only-dev-server', './src/index.js']
 );
 
 const plugins = () => (
   PRODUCTION
     ? [
-      new webpack.DefinePlugin({
-        'process.env': { NODE_ENV: JSON.stringify('production') },
-      }),
       new webpack.optimize.OccurenceOrderPlugin(),
       new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
+      new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),
     ]
     : [
       new webpack.HotModuleReplacementPlugin(),
@@ -30,6 +25,12 @@ const devtool = () => (
   PRODUCTION
     ? 'cheap-module-source-map'
     : 'cheap-module-eval-source-map'
+);
+
+const jsExclude = () => (
+  PRODUCTION
+    ? [/joi-browser/, /react-display-name/, /moment/, /crypto/]
+    : /node_modules/
 );
 
 const scssLoader = () => (
@@ -69,7 +70,7 @@ export default {
     loaders: [
       {
         test: /\.js$/,
-        exclude: [/joi-browser/, /react-display-name/, /moment/, /crypto/],
+        exclude: jsExclude(),
         loader: 'react-hot!babel',
       },
       {
