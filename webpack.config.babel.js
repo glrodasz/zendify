@@ -15,7 +15,7 @@ const plugins = () => (
   PRODUCTION
     ? [
       new webpack.optimize.OccurenceOrderPlugin(),
-      new webpack.optimize.UglifyJsPlugin(),
+      new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
     ]
     : [
       new webpack.HotModuleReplacementPlugin(),
