@@ -6,7 +6,7 @@ An mini platform for send tickets into Zendesk.
 * You need a Zendesk API token
 
 ## Develop
-In order to develop install the dependencies with `npm i` and run `npm start` for see the dev server on `http://localhost:3000`.
+In order to develop install the dependencies with `npm i` and run `npm start` for see the dev server on `http://localhost:5000`.
 
 ## Roadmap
 * Integrate with Auth0
