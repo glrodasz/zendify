@@ -1,7 +1,14 @@
 const path = require('path');
 const Hapi = require('hapi');
+const Zendesk = require('zendesk-node-api');
 
-// TODO: Remove and instead use the utils/env
+const zendesk = new Zendesk({
+  url: `https://${process.env.ZENDESK_HOST}.zendesk.com`,
+  email: process.env.ZENDESK_USERNAME,
+  token: process.env.ZENDESK_TOKEN,
+});
+
+// TODO: Remove and use a common utility
 const PRODUCTION = process.env.NODE_ENV === 'production';
 
 const goodOptions = {
@@ -9,7 +16,12 @@ const goodOptions = {
     console: [
       {
         module: 'good-console',
-        args: [{ log: PRODUCTION ? 'error' : '*', response: '*' }],
+        args: [{
+          log: PRODUCTION ? 'error' : '*',
+          response: '*',
+          format: 'ddd, MMM Do YYYY, h:mm:ss a',
+          utc: false,
+        }],
       },
       'stdout',
     ],
@@ -52,7 +64,22 @@ server.register([{
     method: 'POST',
     path: '/submit',
     handler(request, reply) {
-      reply({ message: 'Succesfully sent.' });
+      const { name, email, subject, message } = JSON.parse(request.payload);
+
+      zendesk.tickets.create({
+        subject,
+        comment: {
+          body: `Customer's name: ${name}
+            Customer's email: ${email}
+            Message: ${message}`,
+          html_body: `<strong>Customer's name:</strong> ${name}<br>
+            <strong>Customer's email:</strong> ${email}<br>
+            <strong>Message:</strong> ${message}<br>`,
+        },
+      }).then(result => {
+        server.log('info', result.ticket.url);
+        reply({ message: 'Succesfully sent.' });
+      }).catch(error => server.log('error', error));
     },
   });
 
