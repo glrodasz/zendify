@@ -18,7 +18,7 @@ const plugins = () => (
         'process.env': { NODE_ENV: JSON.stringify('production') },
       }),
       new webpack.optimize.OccurenceOrderPlugin(),
-      // new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
+      new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
     ]
     : [
       new webpack.HotModuleReplacementPlugin(),
