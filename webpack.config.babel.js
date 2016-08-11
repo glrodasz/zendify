@@ -15,7 +15,7 @@ const plugins = () => (
   PRODUCTION
     ? [
       new webpack.optimize.OccurenceOrderPlugin(),
-      //TODO: Problems with Joi. new webpack.optimize.UglifyJsPlugin(),
+      new webpack.optimize.UglifyJsPlugin(),
     ]
     : [
       new webpack.HotModuleReplacementPlugin(),
@@ -66,7 +66,7 @@ export default {
     loaders: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: [/joi-browser/, /react-display-name/, /moment/],
         loader: 'react-hot!babel',
       },
       {
