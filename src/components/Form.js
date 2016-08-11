@@ -9,6 +9,7 @@ import Message from './Message';
 
 class Form extends Component {
   static propTypes = {
+    clearForm: PropTypes.bool,
     getValidationMessages: PropTypes.func,
     handleValidation: PropTypes.func,
     isLoading: PropTypes.bool,
@@ -68,6 +69,12 @@ class Form extends Component {
 
   getValidatorData() {
     return this.getFormData();
+  }
+
+  clearFormData() {
+    this.inputsRefs.forEach(current => {
+      findDOMNode(this.refs[current]).value = '';
+    });
   }
 
   renderHelpText(message) {

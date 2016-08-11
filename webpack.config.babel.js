@@ -3,7 +3,7 @@ import webpack from 'webpack';
 import { PRODUCTION } from './src/utils/env';
 
 const DEFAULT_PORT = 3000;
-const PROXY_PORT = 8000;
+const PROXY_PORT = process.env.PORT || 8000;
 
 const entry = () => (
   PRODUCTION
