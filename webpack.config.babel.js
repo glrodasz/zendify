@@ -2,6 +2,9 @@ import path from 'path';
 import webpack from 'webpack';
 import { PRODUCTION } from './src/utils/env';
 
+const DEFAULT_PORT = 3000;
+const PROXY_PORT = 8000;
+
 const entry = () => (
   PRODUCTION
     ? ['./src/index.js']
@@ -43,14 +46,17 @@ export default {
   entry: entry(),
   output: {
     path: path.join(__dirname, 'dist'),
-    publicPath: '/dist/',
+    publicPath: `http://0.0.0.0:${DEFAULT_PORT}/dist/`,
     filename: 'bundle.js',
   },
   devtool: devtool(),
   devServer: {
-    port: 3000,
+    port: DEFAULT_PORT,
     hot: true,
     inline: true,
+    proxy: {
+      '*': `http://localhost:${PROXY_PORT}`,
+    },
   },
   resolve: {
     packageAlias: 'browser',

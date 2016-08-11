@@ -9,8 +9,10 @@ An mini platform for send tickets into Zendesk.
 In order to develop install the dependencies with `npm i` and run `npm start` for see the dev server on `http://localhost:3000`.
 
 ## Roadmap
-* Integrate with Auth0
+* Integrate HRM and build with HapiJS
 * Integrate with Zendesk API using HapiJS
+* Write the server in ES2015 and transpile it
+* Integrate with Auth0
 * Write JSDocs
 * Order alphabetical the propTypes of the components
 * Write tests

@@ -11,9 +11,9 @@
     "check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
     "commit": "git-cz",
     "cover": "nyc npm run test",
-    "dev": "webpack-dev-server",
+    "dev": "nodemon server & webpack-dev-server",
     "lint": "eslint src",
-    "postinstall": "npm run build",
+    "start": "NODE_ENV=production npm run build && node server",
     "test:watch": "ava 'tests/**/*.test.js' --verbose --watch",
     "test": "ava 'tests/**/*.test.js' --verbose"
   },
@@ -61,6 +61,8 @@
   "dependencies": {
     "breakpoint-sass": "2.7.0",
     "classnames": "2.2.5",
+    "good": "7.0.1",
+    "good-console": "6.1.2",
     "hapi": "14.1.0",
     "inert": "4.0.1",
     "isomorphic-fetch": "2.2.1",

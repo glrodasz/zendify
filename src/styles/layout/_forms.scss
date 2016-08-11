@@ -52,11 +52,13 @@
 .form__help-block {
   display: inline-block;
   margin: 10px 0 5px;
-  color: $alpha-black-light;
+  transition: opacity .5s;
   font-size: 12px;
   font-style: italic;
+  opacity: 0;
 
   .form__group--error & {
     color: $alizarin;
+    opacity: 1;
   }
 }
