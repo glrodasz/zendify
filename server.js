@@ -42,6 +42,7 @@ server.register([{
     throw err;
   }
 
+  // Static files
   server.route({
     method: 'GET',
     path: '/dist/{param*}',

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Form from '../components/Form';
-import { submitTicket } from '../actions';
+import { submitTicket, resetForm } from '../actions';
 
 const Ticket = (props) => (
   <div className="ticket">
@@ -16,17 +16,16 @@ Ticket.propTypes = {
   showError: PropTypes.bool,
 };
 
-const mapStateToProps = ({
-  isLoading,
-  showError,
-  clearForm,
-  successResponse,
-  errorResponse,
-}) => ({
-  isLoading,
-  showError,
-  clearForm,
-  responseMessage: showError ? errorResponse : successResponse,
-});
+const mapStateToProps = ({ ticket, form }) => {
+  const { isLoading, showError, successResponse, errorResponse } = ticket;
+  const { isFulfilled } = form;
 
-export default connect(mapStateToProps, { submitTicket })(Ticket);
+  return {
+    isLoading,
+    showError,
+    isFulfilled,
+    responseMessage: showError ? errorResponse : successResponse,
+  };
+};
+
+export default connect(mapStateToProps, { submitTicket, resetForm })(Ticket);

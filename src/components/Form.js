@@ -9,11 +9,12 @@ import Message from './Message';
 
 class Form extends Component {
   static propTypes = {
-    clearForm: PropTypes.bool,
     getValidationMessages: PropTypes.func,
     handleValidation: PropTypes.func,
     isLoading: PropTypes.bool,
+    isFulfilled: PropTypes.bool,
     isValid: PropTypes.func,
+    resetForm: PropTypes.func,
     responseMessage: PropTypes.string,
     showError: PropTypes.bool,
     submitTicket: PropTypes.func.isRequired,
@@ -75,6 +76,8 @@ class Form extends Component {
     this.inputsRefs.forEach(current => {
       findDOMNode(this.refs[current]).value = '';
     });
+
+    this.props.resetForm();
   }
 
   renderHelpText(message) {
@@ -86,11 +89,20 @@ class Form extends Component {
   }
 
   render() {
-    const { isLoading, showError, responseMessage } = this.props;
+    const {
+      isLoading,
+      showError,
+      responseMessage,
+      isFulfilled,
+    } = this.props;
 
     const className = classNames('form', 'form--success', {
       'form--loading': isLoading,
     });
+
+    if (isFulfilled) {
+      this.clearFormData();
+    }
 
     return (
       <form className={className} onSubmit={this.onSubmit} noValidate>
