@@ -8,7 +8,7 @@ An mini platform for send tickets into Zendesk.
 3. You have to create an **Auth0** account. You can do it [here](https://manage.auth0.com/login).
 4. TODO: Explain the steps for auth0 setup.
 
-*The **HOST** is the subdomain part of your `https://<HOST>.zendesk.com/` URL**.*
+*The **HOST** is the subdomain part of your `https://<HOST>.zendesk.com/` URL.*
 
 ## Development
 1. Follow the **Setup** steps above.
@@ -16,11 +16,11 @@ An mini platform for send tickets into Zendesk.
 3. Start the development mode running `npm run dev`.
 4. Open the browser at `http://localhost:3000` for watch the changes.
 
-*The development mode start the server listening its changes with `nodemon` also it is listening the client with `webpack-dev-server` that have integrated the **Hot Module Replacement.** Learn more about HRM [here](https://github.com/webpack/docs/wiki/hot-module-replacement-with-webpack).*
+*The development mode start the server listening its changes with `nodemon` also it is listening the client with `webpack-dev-server` that have integrated the **Hot Module Replacement**. Learn more about HRM [here](https://github.com/webpack/docs/wiki/hot-module-replacement-with-webpack)*.
 
 ## Deploy to Heroku
 1. Follow the **Setup** steps above but instead of put the keys and tokens on the `.env` file you have to add them on Heroku.
-2. Add them as enviroment variables in the **Settings ** tab > **Reveal Config Vars** button on the you Heroku app:
+2. Add them as enviroment variables in the **Settings** tab > **Reveal Config Vars** button on the you Heroku app:
 ```bash
 NODE_ENV=production
 NPM_CONFIG_PRODUCTION=false
@@ -33,7 +33,6 @@ ZENDESK_USERNAME=YOUR_ZENDESK_USERNAME
 ## Roadmap
 * Integrate with Auth0
 * Write JSDocs
-* Update README
 * Order alphabetical the propTypes of the components
 * Write tests
 * Support 100% coverage
