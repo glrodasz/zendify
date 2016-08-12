@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch';
 import checkStatus from '../utils/checkStatus';
+import { PROMISE_TIMEOUT } from '../utils/constants';
 
 export const FULFILL_FORM = 'FULFILL_FORM';
 export const RESET_FORM = 'RESET_FORM';
@@ -12,27 +13,26 @@ export const SUBMIT_SUCCESS = 'SUBMIT_SUCCESS';
 export const SUBMIT_FAILURE = 'SUBMIT_FAILURE';
 
 export const submitRequest = () => ({ type: SUBMIT_REQUEST });
-
 export const submitSuccess = response => ({
   type: SUBMIT_SUCCESS,
   response,
 });
 
 export const submitFailure = error => ({ type: SUBMIT_FAILURE, error });
-
 export const submitTicket = data => dispatch => {
   dispatch(submitRequest());
 
   const body = JSON.stringify(data);
 
-  const promise = Promise.race([
+  // Handle the timeout of the promise
+  const request = Promise.race([
     fetch('/submit', { method: 'post', body }),
     new Promise((resolve, reject) => {
-      setTimeout(() => reject(new Error('Request timeout')), 60000);
+      setTimeout(() => reject(new Error('Request timeout')), PROMISE_TIMEOUT);
     }),
   ]);
 
-  return promise
+  return request
     .then(checkStatus)
     .then(response => response.json())
     .then(json => {
