@@ -1,12 +1,19 @@
 import path from 'path';
 import webpack from 'webpack';
-import { PRODUCTION } from './common/utils/env';
-import { CLIENT_PORT, SERVER_PORT } from './portConfig';
+import { PRODUCTION } from './src/common/utils/env';
+import { CLIENT_PORT, SERVER_PORT } from './src/common/config/port';
 
 const entry = () => (
   PRODUCTION
-    ? ['./common/index.js', './client/index.js']
-    : ['webpack/hot/only-dev-server', './common/index.js', './client/index.js']
+    ? [
+      './src/common/index.js',
+      './client/index.js',
+    ]
+    : [
+      'webpack/hot/only-dev-server',
+      './src/common/index.js',
+      './client/index.js',
+    ]
 );
 
 const plugins = () => (
