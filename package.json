@@ -7,14 +7,16 @@
     "node": "6.3.1"
   },
   "scripts": {
-    "build:server": "babel server -d dist",
     "build:client": "NODE_ENV=production webpack",
+    "build:server": "babel server -d dist",
+    "build": "npm run build:client && npm run build:server",
     "check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
+    "clean:build": "rm -rf dist public",
     "commit": "git-cz",
     "cover": "nyc npm run test",
     "dev": "nodemon server/index.js --exec babel-node & webpack-dev-server",
     "lint": "eslint client server",
-    "start": "npm run build:client && npm run build:server && node server",
+    "start": "npm run build && node server",
     "test:watch": "ava 'tests/**/*.test.js' --verbose --watch",
     "test": "ava 'tests/**/*.test.js' --verbose"
   },

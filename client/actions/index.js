@@ -25,7 +25,14 @@ export const submitTicket = data => dispatch => {
 
   const body = JSON.stringify(data);
 
-  return fetch('/submit', { method: 'post', body })
+  const promise = Promise.race([
+    fetch('/submit', { method: 'post', body }),
+    new Promise((resolve, reject) => {
+      setTimeout(() => reject(new Error('Request timeout')), 60000);
+    }),
+  ]);
+
+  return promise
     .then(checkStatus)
     .then(response => response.json())
     .then(json => {

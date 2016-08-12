@@ -13,6 +13,7 @@ In order to develop install the dependencies with `npm i` and run `npm run dev` 
 ## Roadmap
 * Integrate with Auth0
 * Write JSDocs
+* Update README
 * Order alphabetical the propTypes of the components
 * Write tests
 * Support 100% coverage

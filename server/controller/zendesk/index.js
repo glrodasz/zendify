@@ -4,12 +4,10 @@ class ZendeskController {
   }
 
   createTicket({ subject, name, email, message }) {
-    return this.searchCustomer(email).then(customer => {
-      return customer && customer.id
-        ? customer.id
-        : this.createUser({ name, email }).then(user => {
-          return user.id;
-        });
+    return this.searchCustomer(email).then(customers => {
+      return customers.length && customers[0].id
+        ? customers[0].id
+        : this.createUser({ name, email }).then(({ user }) => user.id);
     }).then(customerId => {
       return this.zendeskApi.tickets.create({
         subject,
@@ -24,15 +22,12 @@ class ZendeskController {
   }
 
   listCustomers() {
-    return this.zendeskApi.users.list({ role: 'end-user' });
+    return this.zendeskApi.users.list();
   }
 
   searchCustomer(email) {
-    return this.listCustomers().then(users => {
-      // TODO: Remover console.log
-      console.log('USERS', users);
-      return users.filter(user => user.email === email);
-    });
+    return this.listCustomers()
+      .then(users => users.filter(user => user.email === email));
   }
 }
 

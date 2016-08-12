@@ -1,4 +1,4 @@
-import { PRODUCTION } from '../common/utils/env';
+import { PRODUCTION } from '../../common/utils/env';
 
 const goodOptions = {
   reporters: {

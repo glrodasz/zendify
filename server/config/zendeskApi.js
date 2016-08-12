@@ -1,8 +1,8 @@
-import path from 'path';
 import env from 'node-env-file';
 import Zendesk from 'zendesk-node-api';
 
-env(path.join(__dirname, '.env'));
+// Try first to catch the enviroments from the .env file
+try { env('./.env'); } catch (error) { console.error(error); }
 
 const zendeskApi = new Zendesk({
   url: `https://${process.env.ZENDESK_HOST}.zendesk.com`,

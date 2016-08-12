@@ -1,13 +1,12 @@
-import path from 'path';
 import Hapi from 'hapi';
 import consoleOptions from './config/consoleOptions';
 import zendeskApi from './config/zendeskApi';
 import ZendeskController from './controller/zendesk';
-import { SERVER_PORT } from '../portConfig';
+import connectionParams from './config/connectionParams';
 
 const server = new Hapi.Server();
 
-server.connection({ port: SERVER_PORT });
+server.connection(connectionParams());
 
 // Register the console and inert modules
 server.register([
@@ -28,10 +27,10 @@ server.register([
   // Static files
   server.route({
     method: 'GET',
-    path: '/public/{param*}',
+    path: '/public/{params*}',
     handler: {
       directory: {
-        path: path.join(__dirname, 'public'),
+        path: './public',
       },
     },
   });
@@ -41,7 +40,7 @@ server.register([
     method: 'GET',
     path: '/',
     handler: {
-      file: path.join(__dirname, 'index.html'),
+      file: './index.html',
     },
   });
 
