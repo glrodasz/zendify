@@ -16,7 +16,8 @@
     "cover": "nyc npm run test",
     "dev": "nodemon src/server --exec babel-node & webpack-dev-server",
     "lint": "eslint client src",
-    "start": "npm run build && node dist/server",
+    "postinstall": "npm run build",
+    "start": "node dist/server",
     "test:watch": "ava 'tests/**/*.test.js' --verbose --watch",
     "test": "ava 'tests/**/*.test.js' --verbose"
   },
