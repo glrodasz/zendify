@@ -38,3 +38,7 @@ jspm_packages
 
 # Build files
 dist
+public
+
+# Local env file
+.env

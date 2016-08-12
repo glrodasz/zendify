@@ -12,8 +12,6 @@ In order to develop install the dependencies with `npm i` and run `npm run dev` 
 
 ## Roadmap
 * Integrate with Auth0
-* Refactor folders structure into client, server, common.
-* Write the server in ES2015 and transpiler it
 * Write JSDocs
 * Order alphabetical the propTypes of the components
 * Write tests

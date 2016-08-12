@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { PRODUCTION } from '../utils/env';
+import { PRODUCTION } from '../../common/utils/env';
 
 if (PRODUCTION) {
   module.exports = require('./configureStore.prod');

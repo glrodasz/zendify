@@ -1,14 +1,12 @@
 import path from 'path';
 import webpack from 'webpack';
-import { PRODUCTION } from './src/utils/env';
-
-const DEFAULT_PORT = 3000;
-const PROXY_PORT = process.env.PORT || 5000;
+import { PRODUCTION } from './common/utils/env';
+import { CLIENT_PORT, SERVER_PORT } from './portConfig';
 
 const entry = () => (
   PRODUCTION
-    ? ['./src/index.js']
-    : ['webpack/hot/only-dev-server', './src/index.js']
+    ? ['./common/index.js', './client/index.js']
+    : ['webpack/hot/only-dev-server', './common/index.js', './client/index.js']
 );
 
 const plugins = () => (
@@ -45,17 +43,17 @@ const scssLoader = () => (
 export default {
   entry: entry(),
   output: {
-    path: path.join(__dirname, 'dist'),
-    publicPath: `http://0.0.0.0:${DEFAULT_PORT}/dist/`,
+    path: path.join(__dirname, 'public'),
+    publicPath: `http://0.0.0.0:${CLIENT_PORT}/public/`,
     filename: 'bundle.js',
   },
   devtool: devtool(),
   devServer: {
-    port: DEFAULT_PORT,
+    port: CLIENT_PORT,
     hot: true,
     inline: true,
     proxy: {
-      '*': `http://localhost:${PROXY_PORT}`,
+      '*': `http://localhost:${SERVER_PORT}`,
     },
   },
   resolve: {
