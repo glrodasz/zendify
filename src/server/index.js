@@ -1,7 +1,7 @@
 import Hapi from 'hapi';
 import consoleOptions from './config/consoleOptions';
 import zendeskApi from './config/zendeskApi';
-import ZendeskController from './controller/zendesk';
+import ZendeskService from './service/zendesk';
 import connectionParams from './config/connectionParams';
 
 const server = new Hapi.Server();
@@ -49,14 +49,14 @@ server.register([
     method: 'POST',
     path: '/submit',
     handler(request, reply) {
-      const zendeskController = new ZendeskController(zendeskApi);
+      const zendeskService = new ZendeskService(zendeskApi);
 
-      zendeskController.createTicket(JSON.parse(request.payload))
-      .then(({ result }) => {
-        server.log('info', result && result.url);
-        reply({ message: 'Succesfully sent.' });
-      })
-      .catch(error => server.log('error', error));
+      zendeskService.createTicket(JSON.parse(request.payload))
+        .then(({ result }) => {
+          server.log('info', result && result.url);
+          reply({ message: 'Succesfully sent.' });
+        })
+        .catch(error => server.log('error', error));
     },
   });
 

@@ -10,7 +10,7 @@ An mini platform for send tickets into Zendesk.
 
 *The **HOST** is the subdomain part of your `https://<HOST>.zendesk.com/` URL**.*
 
-## Develop
+## Development
 1. Follow the **Setup** steps above.
 2. Install the dependencies running `npm install`.
 3. Start the development mode running `npm run dev`.

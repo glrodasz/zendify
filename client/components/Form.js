@@ -41,6 +41,12 @@ class Form extends Component {
     this.inputsRefs = Object.keys(this.refs);
   }
 
+  componentDidUpdate() {
+    if (this.props.isFulfilled) {
+      this.clearFormData();
+    }
+  }
+
   onSubmit(event) {
     event.preventDefault();
 
@@ -93,16 +99,11 @@ class Form extends Component {
       isLoading,
       showError,
       responseMessage,
-      isFulfilled,
     } = this.props;
 
     const className = classNames('form', 'form--success', {
       'form--loading': isLoading,
     });
-
-    if (isFulfilled) {
-      this.clearFormData();
-    }
 
     return (
       <form className={className} onSubmit={this.onSubmit} noValidate>

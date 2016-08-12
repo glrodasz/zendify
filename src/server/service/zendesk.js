@@ -1,9 +1,9 @@
 /**
- * Zendesk controller class
+ * Zendesk service class
  */
-class ZendeskController {
+class ZendeskService {
   /**
-   * Zendesk controller constructor
+   * Zendesk service constructor
    * @param  {Zendesk} zendeskApi - A Zendesk Object
    * @return {void}
    */
@@ -64,4 +64,4 @@ class ZendeskController {
   }
 }
 
-export default ZendeskController;
+export default ZendeskService;
