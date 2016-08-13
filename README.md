@@ -4,11 +4,11 @@ An mini platform for send tickets into Zendesk.
 ## Setup
 1. You need to create a **Zendesk** account. You can do it  [here](https://www.zendesk.com/register/#getstarted).
 2. You need to create a new token. For that go to the **Admin** panel > **Channels** > **API**.
-3. Put the **HOST**, **USERNAME** and **TOKEN** into the `.env.example` file and rename it into `.env`.
+3. Put the **SUBDOMAIN**, **USERNAME** and **TOKEN** into the `.env.example` file and rename it into `.env`.
 3. You have to create an **Auth0** account. You can do it [here](https://manage.auth0.com/login).
-4. TODO: Explain the steps for auth0 setup.
+4. Setup Explain the steps for auth0 setup.
 
-> The **HOST** is the subdomain part of your `https://<HOST>.zendesk.com/` URL.
+> The **SUBDOMAIN** is the subdomain part of your `https://<SUBDOMAIN>.zendesk.com/` URL.
 
 ## Development
 1. Follow the **Setup** steps above.
@@ -23,13 +23,15 @@ An mini platform for send tickets into Zendesk.
 2. Add them as enviroment variables in the **Settings** tab > **Reveal Config Vars** button on the you Heroku app.
 3. Deploy the app as usual. `git push heroku master`.
 
-Heroku environment variables example:
+> Environment variables that you need to have on Heroku:
 ```bash
 NODE_ENV=production
 NPM_CONFIG_PRODUCTION=false
-ZENDESK_HOST=YOUR_HOST
+ZENDESK_SUBDOMAIN=YOUR_SUBDOMAIN
 ZENDESK_TOKEN=YOUR_ZENDESK_TOKEN
 ZENDESK_USERNAME=YOUR_ZENDESK_USERNAME
+AUTH0_CLIENT_ID=YOUR_CLIENT_ID
+AUTH0_CLIENT_DOMAIN=YOUR_CLIENT_DOMAIN
 ```
 
 ## Roadmap

@@ -1,6 +1,6 @@
 import Hapi from 'hapi';
 import consoleOptions from './config/consoleOptions';
-import zendeskApi from './config/zendeskApi';
+import zendeskNodeApi from './config/zendeskNodeApi';
 import ZendeskService from './service/zendesk';
 import connectionParams from './config/connectionParams';
 
@@ -49,7 +49,7 @@ server.register([
     method: 'POST',
     path: '/submit',
     handler(request, reply) {
-      const zendeskService = new ZendeskService(zendeskApi);
+      const zendeskService = new ZendeskService(zendeskNodeApi);
 
       zendeskService.createTicket(JSON.parse(request.payload))
         .then(({ result }) => {

@@ -1,7 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
-import { PRODUCTION } from './src/common/utils/env';
 import { CLIENT_PORT, SERVER_PORT } from './src/common/config/port';
+import { PRODUCTION } from './src/common/utils/env';
 
 const entry = () => (
   PRODUCTION

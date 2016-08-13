@@ -4,11 +4,11 @@
 class ZendeskService {
   /**
    * Zendesk service constructor
-   * @param  {Zendesk} zendeskApi - A Zendesk Object
+   * @param  {ZendeskNodeApi} zendeskNodeApi - A ZendeskNodeApi instance
    * @return {void}
    */
-  constructor(zendeskApi) {
-    this.zendeskApi = zendeskApi;
+  constructor(zendeskNodeApi) {
+    this.zendeskNodeApi = zendeskNodeApi;
   }
 
   /**
@@ -26,7 +26,7 @@ class ZendeskService {
         ? customers[0].id
         : this.createUser({ name, email }).then(({ user }) => user.id);
     }).then(customerId => {
-      return this.zendeskApi.tickets.create({
+      return this.zendeskNodeApi.tickets.create({
         subject,
         requester_id: customerId,
         comment: { body: message },
@@ -42,7 +42,7 @@ class ZendeskService {
    * @return {Promise} - A promise with the created user
    */
   createUser({ name, email }) {
-    return this.zendeskApi.users.create({ name, email });
+    return this.zendeskNodeApi.users.create({ name, email });
   }
 
   /**
@@ -50,7 +50,7 @@ class ZendeskService {
    * @return {Promise} - A promise with the users list
    */
   listUsers() {
-    return this.zendeskApi.users.list();
+    return this.zendeskNodeApi.users.list();
   }
 
   /**
