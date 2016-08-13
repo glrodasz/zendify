@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 
-try { dotenv.load(); } catch (error) { console.error(error); }
+try { dotenv.load(); } catch (error) { console.error(error); } // eslint-disable-line
 
 export const PRODUCTION = process.env.NODE_ENV === 'production';
 

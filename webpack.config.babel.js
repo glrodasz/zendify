@@ -69,6 +69,7 @@ export default {
   node: {
     net: 'empty',
     dns: 'empty',
+    fs: 'empty',
   },
   module: {
     preLoaders: [
