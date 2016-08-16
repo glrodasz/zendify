@@ -1,7 +1,10 @@
 import path from 'path';
 import webpack from 'webpack';
+import dotenv from 'dotenv';
 import { CLIENT_PORT, SERVER_PORT } from './src/common/config/port';
-import { PRODUCTION } from './src/common/utils/env';
+import PRODUCTION from './src/common/utils/production';
+
+try { dotenv.load(); } catch (error) { console.error(error); } // eslint-disable-line
 
 const entry = () => (
   PRODUCTION
@@ -21,11 +24,19 @@ const plugins = () => (
     ? [
       new webpack.optimize.OccurenceOrderPlugin(),
       new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
-      new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': '"production"',
+        __AUTH0_CLIENT_ID__: JSON.stringify(process.env.AUTH0_CLIENT_ID),
+        __AUTH0_DOMAIN__: JSON.stringify(process.env.AUTH0_DOMAIN),
+      }),
     ]
     : [
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin(),
+      new webpack.DefinePlugin({
+        __AUTH0_CLIENT_ID__: JSON.stringify(process.env.AUTH0_CLIENT_ID),
+        __AUTH0_DOMAIN__: JSON.stringify(process.env.AUTH0_DOMAIN),
+      }),
     ]
 );
 
@@ -69,7 +80,6 @@ export default {
   node: {
     net: 'empty',
     dns: 'empty',
-    fs: 'empty',
   },
   module: {
     preLoaders: [

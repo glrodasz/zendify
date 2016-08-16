@@ -3,7 +3,7 @@ import {
   ZENDESK_SUBDOMAIN,
   ZENDESK_USERNAME,
   ZENDESK_TOKEN,
-} from '../../../src/common/utils/env';
+} from '../utils/env';
 
 const zendeskNodeApi = new ZendeskNodeApi({
   url: `https://${ZENDESK_SUBDOMAIN}.zendesk.com`,

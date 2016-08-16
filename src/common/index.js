@@ -1,1 +1,1 @@
-export * from './utils/env';
+export PRODUCTION from './utils/production';

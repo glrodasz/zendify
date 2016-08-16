@@ -1,4 +1,4 @@
-import { PRODUCTION } from '../../common/utils/env';
+import PRODUCTION from '../../common/utils/production';
 import { SERVER_PORT } from '../../common/config/port';
 
 const connectionParams = () => (
