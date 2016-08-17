@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch';
 import checkStatus from '../utils/checkStatus';
 import { PROMISE_TIMEOUT } from '../utils/constants';
 import auth0Lock from '../utils/config/auth0Lock';
+import AuthService from '../utils/service/auth';
 
 // Login actions
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -11,18 +12,10 @@ const loginSuccess = profile => ({ type: LOGIN_SUCCESS, profile });
 const loginFailure = error => ({ type: LOGIN_FAILURE, error });
 
 export const login = () => dispatch => {
-  auth0Lock.show({}, (error, profile, token) => {
-    console.info(error, profile, token);
-    if (error) {
-      return dispatch(loginFailure(error));
-    }
-
-    // TODO: Replace with AuthService
-    localStorage.setItem('profile', JSON.stringify(profile));
-    localStorage.setItem('id_token', token);
-
-    return dispatch(loginSuccess(profile));
-  });
+  const successCb = profile => { dispatch(loginSuccess(profile)); };
+  const failureCb = error => { dispatch(loginFailure(error)); };
+  const authService = new AuthService(auth0Lock, successCb, failureCb);
+  authService.login();
 };
 
 // Logout actions
@@ -31,9 +24,8 @@ export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 const logoutSuccess = () => ({ type: LOGOUT_SUCCESS });
 
 export const logout = () => dispatch => {
-  // TODO: Replace with AuthService
-  localStorage.removeItem('id_token');
-  localStorage.removeItem('profile');
+  const authService = new AuthService(auth0Lock);
+  authService.logout();
 
   return dispatch(logoutSuccess());
 };

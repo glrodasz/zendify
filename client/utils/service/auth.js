@@ -1,22 +1,33 @@
 import { isTokenExpired } from '../tokenHelper';
+import noop from '../../../src/common/utils/noop';
 
 class AuthService {
-  constructor(auth0Lock) {
+  constructor(auth0Lock, successCb = noop, failureCb = noop) {
     this.lock = auth0Lock;
+
+    this.successCb = successCb;
+    this.failureCb = failureCb;
     this.login = this.login.bind(this);
-    this.lock.on('authenticated', this.doAuthentication.bind(this));
+
+    this.lock.on('authenticated', this.authenticated.bind(this));
+    this.lock.on('authorization_error', this.authorizationError.bind(this));
   }
 
-  // TODO: Refactor
-  doAuthentication(authResult) {
-    this.setToken(authResult.idToken);
+  authenticated(authResult) {
     this.lock.getProfile(authResult.idToken, (error, profile) => {
       if (error) {
-        console.log('Error loading the Profile', error); // eslint-disable-line
+        console.error('Error loading the profile', error); // eslint-disable-line
       } else {
+        this.setToken(authResult.idToken);
         this.setProfile(profile);
+        this.successCb(profile);
       }
     });
+  }
+
+  authorizationError(error) {
+    console.error('Authentication Error', error);  // eslint-disable-line
+    this.failureCb(error);
   }
 
   login() {
