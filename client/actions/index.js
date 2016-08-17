@@ -12,13 +12,12 @@ const loginSuccess = profile => ({ type: LOGIN_SUCCESS, profile });
 const loginFailure = error => ({ type: LOGIN_FAILURE, error });
 
 export const login = () => dispatch => {
-  /**
   const successCb = profile => { dispatch(loginSuccess(profile)); };
   const failureCb = error => { dispatch(loginFailure(error)); };
   const authService = new AuthService(auth0Lock, successCb, failureCb);
   authService.login();
-  **/
 
+  /*
   auth0Lock.show((error, profile, token) => {
     if (error) {
       return dispatch(loginFailure(error));
@@ -29,6 +28,7 @@ export const login = () => dispatch => {
 
     return dispatch(loginSuccess(profile));
   });
+  */
 };
 
 // Logout actions
@@ -60,7 +60,6 @@ const submitRequest = () => ({ type: SUBMIT_REQUEST });
 const submitSuccess = response => ({ type: SUBMIT_SUCCESS, response });
 const submitFailure = error => ({ type: SUBMIT_FAILURE, error });
 
-// TODO: Refactor into middleware API
 export const submit = data => dispatch => {
   dispatch(submitRequest());
 
