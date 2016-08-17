@@ -1,23 +1,16 @@
-import {
-  LOGIN_SUCCESS,
-  LOGIN_FAILURE,
-  LOGOUT_SUCCESS,
-} from '../actions';
-import { isTokenExpired } from '../utils/jwtHelper';
+import { LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS } from '../actions';
+import auth0Lock from '../utils/config/auth0Lock';
+import AuthService from '../utils/service/auth';
 
-// TODO: Move into AuthService
-const token = localStorage.getItem('id_token');
+const authService = new AuthService(auth0Lock);
 
-// TODO: Move into AuthService
-function getProfile() {
-  return JSON.parse(localStorage.getItem('profile'));
-}
-
-function auth(state = {
-  isAuthenticated: isTokenExpired(token),
-  profile: getProfile(),
+const initialState = {
+  isAuthenticated: authService.loggedIn(),
+  profile: authService.getProfile(),
   error: '',
-}, action) {
+};
+
+function auth(state = initialState, action) {
   switch (action.type) {
     case LOGIN_SUCCESS:
       return {

@@ -86,6 +86,7 @@
     "react-dom": "15.3.0",
     "react-redux": "4.4.5",
     "react-router": "2.6.1",
+    "react-router-redux": "4.0.5",
     "react-validation-mixin": "5.4.0",
     "redux": "3.5.2",
     "redux-thunk": "2.1.0",

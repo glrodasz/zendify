@@ -1,10 +1,11 @@
-import {
-  SUBMIT_REQUEST,
-  SUBMIT_FAILURE,
-  SUBMIT_SUCCESS,
-} from '../actions';
+import { SUBMIT_REQUEST, SUBMIT_FAILURE, SUBMIT_SUCCESS } from '../actions';
 
-function ticket(state = { isLoading: false, showError: false }, action) {
+const initialState = {
+  isLoading: false,
+  showError: false,
+};
+
+function ticket(state = initialState, action) {
   switch (action.type) {
     case SUBMIT_REQUEST:
       return {

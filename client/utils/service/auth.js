@@ -1,3 +1,5 @@
+import { isTokenExpired } from '../tokenHelper';
+
 class AuthService {
   constructor(auth0Lock) {
     this.lock = auth0Lock;
@@ -5,8 +7,16 @@ class AuthService {
     this.lock.on('authenticated', this.doAuthentication.bind(this));
   }
 
+  // TODO: Refactor
   doAuthentication(authResult) {
     this.setToken(authResult.idToken);
+    this.lock.getProfile(authResult.idToken, (error, profile) => {
+      if (error) {
+        console.log('Error loading the Profile', error); // eslint-disable-line
+      } else {
+        this.setProfile(profile);
+      }
+    });
   }
 
   login() {
@@ -14,7 +24,17 @@ class AuthService {
   }
 
   loggedIn() {
-    return !!this.getToken();
+    const token = this.getToken();
+    return !!token && !isTokenExpired(token);
+  }
+
+  setProfile(profile) {
+    localStorage.setItem('profile', JSON.stringify(profile));
+  }
+
+  getProfile() {
+    const profile = localStorage.getItem('profile');
+    return profile ? JSON.parse(localStorage.profile) : {};
   }
 
   setToken(idToken) {
@@ -27,6 +47,7 @@ class AuthService {
 
   logout() {
     localStorage.removeItem('id_token');
+    localStorage.removeItem('profile');
   }
 }
 

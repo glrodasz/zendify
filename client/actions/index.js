@@ -11,7 +11,8 @@ const loginSuccess = profile => ({ type: LOGIN_SUCCESS, profile });
 const loginFailure = error => ({ type: LOGIN_FAILURE, error });
 
 export const login = () => dispatch => {
-  auth0Lock.show((error, profile, token) => {
+  auth0Lock.show({}, (error, profile, token) => {
+    console.info(error, profile, token);
     if (error) {
       return dispatch(loginFailure(error));
     }
