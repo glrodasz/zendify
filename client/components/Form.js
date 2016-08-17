@@ -11,13 +11,14 @@ class Form extends Component {
   static propTypes = {
     getValidationMessages: PropTypes.func,
     handleValidation: PropTypes.func,
-    isLoading: PropTypes.bool,
+    isAuthenticated: PropTypes.bool,
     isFulfilled: PropTypes.bool,
+    isLoading: PropTypes.bool,
     isValid: PropTypes.func,
-    resetForm: PropTypes.func,
+    reset: PropTypes.func,
     responseMessage: PropTypes.string,
     showError: PropTypes.bool,
-    submitTicket: PropTypes.func.isRequired,
+    submit: PropTypes.func.isRequired,
     validate: PropTypes.func,
   }
 
@@ -52,7 +53,7 @@ class Form extends Component {
 
     const onValidate = error => {
       if (!error) {
-        this.props.submitTicket(this.getFormData());
+        this.props.submit(this.getFormData());
       }
     };
 
@@ -83,7 +84,7 @@ class Form extends Component {
       findDOMNode(this.refs[current]).value = '';
     });
 
-    this.props.resetForm();
+    this.props.reset();
   }
 
   renderHelpText(message) {
@@ -99,6 +100,7 @@ class Form extends Component {
       isLoading,
       showError,
       responseMessage,
+      isAuthenticated,
     } = this.props;
 
     const className = classNames('form', 'form--success', {
@@ -161,7 +163,9 @@ class Form extends Component {
           isLoading={isLoading}
           text={showError ? 'Try again' : 'Send'}
           type={showError ? 'error' : 'success'}
-          className="form__submit"
+          className="form__button"
+          isDisabled={!isAuthenticated}
+          isSubmit
         />
         <Message
           text={responseMessage}

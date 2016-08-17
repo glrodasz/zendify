@@ -1,7 +1,7 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Form from '../components/Form';
-import { submitTicket, resetForm } from '../actions';
+import { submit, reset } from '../actions';
 
 const Ticket = (props) => (
   <div className="ticket">
@@ -10,13 +10,7 @@ const Ticket = (props) => (
   </div>
 );
 
-Ticket.propTypes = {
-  isLoading: PropTypes.bool,
-  responseMessage: PropTypes.string,
-  showError: PropTypes.bool,
-};
-
-const mapStateToProps = ({ ticket, form }) => {
+const mapStateToProps = ({ ticket, form, auth: { isAuthenticated } }) => {
   const { isLoading, showError, successResponse, errorResponse } = ticket;
   const { isFulfilled } = form;
 
@@ -24,8 +18,9 @@ const mapStateToProps = ({ ticket, form }) => {
     isLoading,
     showError,
     isFulfilled,
+    isAuthenticated,
     responseMessage: showError ? errorResponse : successResponse,
   };
 };
 
-export default connect(mapStateToProps, { submitTicket, resetForm })(Ticket);
+export default connect(mapStateToProps, { submit, reset })(Ticket);

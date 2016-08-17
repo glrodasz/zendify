@@ -7,6 +7,9 @@ class Button extends Component {
     isLoading: PropTypes.bool,
     text: PropTypes.string,
     type: PropTypes.string,
+    isSubmit: PropTypes.bool,
+    isDisabled: PropTypes.bool,
+    handleClick: PropTypes.func,
   }
 
   constructor(props) {
@@ -34,13 +37,14 @@ class Button extends Component {
   }
 
   render() {
-    const { isLoading, text } = this.props;
+    const { isLoading, isDisabled, text, isSubmit, handleClick } = this.props;
 
     return (
       <button
         className={this.getClasses(this.props)}
-        type="submit"
-        disabled={isLoading}
+        type={isSubmit ? 'submit' : 'button'}
+        disabled={isLoading || isDisabled}
+        onClick={handleClick}
       >
         {isLoading ? this.renderLoading() : text}
       </button>

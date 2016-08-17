@@ -1,13 +1,13 @@
-import { FULFILL_FORM, RESET_FORM } from '../actions';
+import { FORM_SUCCESS, FORM_RESET } from '../actions';
 
 function form(state = { isFulfilled: false }, action) {
   switch (action.type) {
-    case FULFILL_FORM:
+    case FORM_SUCCESS:
       return {
         ...state,
         isFulfilled: true,
       };
-    case RESET_FORM:
+    case FORM_RESET:
       return {
         ...state,
         isFulfilled: false,

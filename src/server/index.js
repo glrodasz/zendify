@@ -38,7 +38,7 @@ server.register([
   // Entry point
   server.route({
     method: 'GET',
-    path: '/',
+    path: '/{params*}',
     handler: {
       file: './index.html',
     },

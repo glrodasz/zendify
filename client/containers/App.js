@@ -1,8 +1,10 @@
 import React from 'react';
-import Ticket from '../containers/Ticket';
+import Ticket from './Ticket';
+import Navbar from './Navbar';
 
 const App = () => (
   <div className="app">
+    <Navbar />
     <Ticket />
   </div>
 );
