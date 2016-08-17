@@ -12,10 +12,23 @@ const loginSuccess = profile => ({ type: LOGIN_SUCCESS, profile });
 const loginFailure = error => ({ type: LOGIN_FAILURE, error });
 
 export const login = () => dispatch => {
+  /**
   const successCb = profile => { dispatch(loginSuccess(profile)); };
   const failureCb = error => { dispatch(loginFailure(error)); };
   const authService = new AuthService(auth0Lock, successCb, failureCb);
   authService.login();
+  **/
+
+  auth0Lock.show((error, profile, token) => {
+    if (error) {
+      return dispatch(loginFailure(error));
+    }
+
+    localStorage.setItem('profile', JSON.stringify(profile));
+    localStorage.setItem('id_token', token);
+
+    return dispatch(loginSuccess(profile));
+  });
 };
 
 // Logout actions
@@ -26,7 +39,6 @@ const logoutSuccess = () => ({ type: LOGOUT_SUCCESS });
 export const logout = () => dispatch => {
   const authService = new AuthService(auth0Lock);
   authService.logout();
-
   return dispatch(logoutSuccess());
 };
 

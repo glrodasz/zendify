@@ -7,8 +7,8 @@ class AuthService {
 
     this.successCb = successCb;
     this.failureCb = failureCb;
-    this.login = this.login.bind(this);
 
+    this.login = this.login.bind(this);
     this.lock.on('authenticated', this.authenticated.bind(this));
     this.lock.on('authorization_error', this.authorizationError.bind(this));
   }
