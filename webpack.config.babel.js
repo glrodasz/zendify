@@ -23,7 +23,7 @@ const plugins = () => (
   PRODUCTION
     ? [
       new webpack.optimize.OccurenceOrderPlugin(),
-      // new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
+      new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': '"production"',
         __AUTH0_CLIENT_ID__: JSON.stringify(process.env.AUTH0_CLIENT_ID),
@@ -51,6 +51,21 @@ const scssLoader = () => (
     ? 'style!css!sass'
     : 'style!css?sourceMap!sass?sourceMap'
 );
+
+const jsExclude = () => (
+  PRODUCTION
+    ? [
+      /joi-browser/,
+      /react-display-name/,
+      /moment/,
+      /crypto/,
+      /auth0-lock/,
+      /immutable/,
+      /underscore/,
+    ]
+    : /node_modules/
+);
+
 
 export default {
   entry: entry(),
@@ -86,7 +101,7 @@ export default {
     loaders: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: jsExclude(),
         loader: 'react-hot!babel',
       },
       {
