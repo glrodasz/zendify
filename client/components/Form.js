@@ -35,6 +35,7 @@ class Form extends Component {
     this.getValidatorData = this.getValidatorData.bind(this);
     this.renderHelpText = this.renderHelpText.bind(this);
     this.getClasses = this.getClasses.bind(this);
+    this.getButtonText = this.getButtonText.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -77,6 +78,16 @@ class Form extends Component {
 
   getValidatorData() {
     return this.getFormData();
+  }
+
+  getButtonText() {
+    const { isAuthenticated, showError } = this.props;
+
+    if (!isAuthenticated) {
+      return 'Login first!';
+    }
+
+    return showError ? 'Try again' : 'Send';
   }
 
   clearFormData() {
@@ -161,7 +172,7 @@ class Form extends Component {
         </div>
         <Button
           isLoading={isLoading}
-          text={showError ? 'Try again' : 'Send'}
+          text={this.getButtonText()}
           type={showError ? 'error' : 'success'}
           className="form__button"
           isDisabled={!isAuthenticated}

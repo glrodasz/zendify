@@ -1,11 +1,14 @@
 .ticket {
   max-width: 800px;
-  margin: 30px auto;
+  margin: 30px 10px;
   padding: 25px 30px 20px;
-  border: 1p solid $alpha-onyx-light;
   border-radius: 2px;
   background: $clouds;
   box-shadow: $shadow;
+
+  @include breakpoint($small) {
+    margin: 30px auto;
+  }
 }
 
 .ticket__title {

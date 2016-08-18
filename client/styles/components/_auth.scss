@@ -1,0 +1,55 @@
+.auth {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  flex-direction: row-reverse;
+  height: 45px;
+  padding: 5px 10px;
+  background: $apha-clouds;
+  box-shadow: $shadow;
+}
+
+.auth__container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.auth__badge {
+  display: inline-block;
+  text-align: center;
+}
+
+.auth__image {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+  border: 1px solid $white;
+  border-radius: 50%;
+  box-shadow: $shadow;
+  vertical-align: middle;
+}
+
+.auth__name {
+  display: inline-block;
+  margin: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+.auth__button {
+  width: 80px;
+  margin-top: 5px;
+  margin-left: 5px;
+  padding: 5px 10px;
+  font-size: 10px;
+  float: right;
+
+  &.button--success {
+    margin-top: 5px;
+  }
+}
