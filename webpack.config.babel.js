@@ -23,7 +23,7 @@ const plugins = () => (
   PRODUCTION
     ? [
       new webpack.optimize.OccurenceOrderPlugin(),
-      new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
+      // new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': '"production"',
         __AUTH0_CLIENT_ID__: JSON.stringify(process.env.AUTH0_CLIENT_ID),
@@ -44,12 +44,6 @@ const devtool = () => (
   PRODUCTION
     ? 'cheap-module-source-map'
     : 'cheap-module-eval-source-map'
-);
-
-const jsExclude = () => (
-  PRODUCTION
-    ? [/joi-browser/, /react-display-name/, /moment/, /crypto/]
-    : /node_modules/
 );
 
 const scssLoader = () => (
@@ -92,7 +86,7 @@ export default {
     loaders: [
       {
         test: /\.js$/,
-        exclude: jsExclude(),
+        exclude: /node_modules/,
         loader: 'react-hot!babel',
       },
       {
