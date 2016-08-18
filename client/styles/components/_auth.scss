@@ -26,7 +26,7 @@
   display: inline-block;
   width: 30px;
   height: 30px;
-  margin: 0 5px;
+  margin: 2px 5px;
   border: 1px solid $white;
   border-radius: 50%;
   box-shadow: $shadow;
@@ -35,7 +35,8 @@
 
 .auth__name {
   display: inline-block;
-  margin: 5px 10px;
+  margin: 5px;
+  color: $alpha-black-dark;
   font-size: 14px;
   font-weight: bold;
   vertical-align: middle;
@@ -46,8 +47,8 @@
   margin-top: 5px;
   margin-left: 5px;
   padding: 5px 10px;
-  font-size: 10px;
   float: right;
+  font-size: 10px;
 
   &.button--success {
     margin-top: 5px;

@@ -1,0 +1,7 @@
+@function default($value, $default) {
+  @if ($value != null) {
+    @return $value;
+  } @else {
+    @return $default;
+  }
+}

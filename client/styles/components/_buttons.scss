@@ -22,7 +22,6 @@
 }
 
 .button[disabled] {
-  color: $alpha-onyx-dark;
   cursor: not-allowed;
-  @include pseudo-button($black, $silver);
+  @include pseudo-button($alpha-black-light, $silver, 0);
 }
