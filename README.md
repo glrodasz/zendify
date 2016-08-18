@@ -2,11 +2,14 @@
 An mini platform for send tickets into Zendesk.
 
 ## Setup
-1. You need to create a **Zendesk** account. You can do it  [here](https://www.zendesk.com/register/#getstarted).
-2. You need to create a new token. For that go to the **Admin** panel > **Channels** > **API**.
+1. Create a **Zendesk** account. You can do it  [here](https://www.zendesk.com/register/#getstarted).
+2. Create a new token. For that go to the **Admin** panel > **Channels** > **API**.
 3. Put the **SUBDOMAIN**, **USERNAME** and **TOKEN** into the `.env.example` file and rename it into `.env`.
-3. You have to create an **Auth0** account. You can do it [here](https://manage.auth0.com/login).
-4. Setup Explain the steps for auth0 setup.
+4. Create an **Auth0** account. You can do it [here](https://manage.auth0.com/login).
+5. Crate a new client in **Clients** menu > **Create client** or modify the default one.
+6. Set the `http://localhost:300` in **Allowed Callback URLs** and **Allowed Origins (CORS)**.
+7. Get the **CLIENT ID** and **DOMAIN** put them into  the `.env` file as you did it before.
+8. Create a new user in the **Users** menu in order to test it.
 
 > The **SUBDOMAIN** is the subdomain part of your `https://<SUBDOMAIN>.zendesk.com/` URL.
 
