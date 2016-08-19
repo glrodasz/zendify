@@ -23,14 +23,14 @@ function auth(state = initialState, action) {
       return {
         ...state,
         isAuthenticated: false,
-        profile: null,
+        profile: {},
         error: action.error,
       };
     case LOGOUT_SUCCESS:
       return {
         ...state,
         isAuthenticated: false,
-        profile: null,
+        profile: {},
       };
     default:
       return state;

@@ -16,19 +16,6 @@ export const login = () => dispatch => {
   const failureCb = error => { dispatch(loginFailure(error)); };
   const authService = new AuthService(auth0Lock, successCb, failureCb);
   authService.login();
-
-  /*
-  auth0Lock.show((error, profile, token) => {
-    if (error) {
-      return dispatch(loginFailure(error));
-    }
-
-    localStorage.setItem('profile', JSON.stringify(profile));
-    localStorage.setItem('id_token', token);
-
-    return dispatch(loginSuccess(profile));
-  });
-  */
 };
 
 // Logout actions
