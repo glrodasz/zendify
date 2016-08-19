@@ -10,17 +10,26 @@ const Ticket = (props) => (
   </div>
 );
 
-const mapStateToProps = ({ ticket, form, auth: { isAuthenticated } }) => {
-  const { isLoading, showError, successResponse, errorResponse } = ticket;
-  const { isFulfilled } = form;
-
-  return {
+const mapStateToProps = ({
+  ticket: {
     isLoading,
     showError,
-    isFulfilled,
+    successResponse,
+    errorResponse,
+  },
+  form: { isFulfilled },
+  auth: {
     isAuthenticated,
-    responseMessage: showError ? errorResponse : successResponse,
-  };
-};
+    profile: { email, name },
+  },
+}) => ({
+  isLoading,
+  showError,
+  isFulfilled,
+  isAuthenticated,
+  agentEmail: email,
+  agentName: name,
+  responseMessage: showError ? errorResponse : successResponse,
+});
 
 export default connect(mapStateToProps, { submit, reset })(Ticket);

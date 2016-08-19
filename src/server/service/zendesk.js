@@ -8,59 +8,61 @@ class ZendeskService {
    * @return {void}
    */
   constructor(zendeskNodeApi) {
-    this.zendeskNodeApi = zendeskNodeApi;
+    this.api = zendeskNodeApi;
   }
 
   /**
    * Create a new Zendesk ticket
    * @param  {Object} Payload - Payload information
    * @param  {string} Payload.name - Customer's name
+   * @param  {string} Payload.agentEmail - Agent's email
    * @param  {string} Payload.email - Customer's email
    * @param  {string} Payload.subject - Ticket's subject
    * @param  {string} Payload.message - Ticket's message
    * @return {Promise} - A promise with the created ticket
    */
-  createTicket({ name, email, subject, message }) {
-    return this.searchCustomer(email).then(customers => {
-      return customers.length && customers[0].id
-        ? customers[0].id
-        : this.createUser({ name, email }).then(({ user }) => user.id);
-    }).then(customerId => {
-      return this.zendeskNodeApi.tickets.create({
-        subject,
-        requester_id: customerId,
-        comment: { body: message },
+  createTicket({ agentName, agentEmail, name, email, subject, message }) {
+    return this.searchAgent(agentEmail)
+      .then(([agent]) => {
+        return agent && agent.id
+          ? agent.id
+          : this.createAgent({ agentName, agentEmail })
+            .then(({ user }) => user.id);
+      }).then(agentId => {
+        return this.api.tickets.create({
+          subject,
+          requester: {
+            name,
+            email,
+          },
+          submitter_id: agentId,
+          comment: { body: message },
+        });
       });
+  }
+
+  /**
+   * Create a new Zendesk agent user
+   * @param  {Object} Agent - Agent information
+   * @param  {string} agentName - Agent's name
+   * @param  {string} agentEmail - Agent's email
+   * @return {Promise} - A promise with the created agent
+   */
+  createAgent({ agentName, agentEmail }) {
+    return this.api.users.create({
+      name: agentName,
+      email: agentEmail,
+      role: 'agent',
     });
   }
 
   /**
-   * Create a new Zendesk user
-   * @param  {Object} User - User information
-   * @param  {string} name - User's name
-   * @param  {string} email - User's email
-   * @return {Promise} - A promise with the created user
+   * Search a Zendesk agent by email
+   * @param  {string} email - Agent's email
+   * @return {Promise} - A promise with the found agent
    */
-  createUser({ name, email }) {
-    return this.zendeskNodeApi.users.create({ name, email });
-  }
-
-  /**
-   * List the users of Zendesk
-   * @return {Promise} - A promise with the users list
-   */
-  listUsers() {
-    return this.zendeskNodeApi.users.list();
-  }
-
-  /**
-   * Search a customer of Zendesk
-   * @param  {string} email - Customer's email
-   * @return {Promise} - A promise with the found customer
-   */
-  searchCustomer(email) {
-    return this.listUsers()
-      .then(users => users.filter(user => user.email === email));
+  searchAgent(email) {
+    return this.api.search.list(`query=type:user email:${email}`);
   }
 }
 

@@ -9,6 +9,8 @@ import Message from './Message';
 
 class Form extends Component {
   static propTypes = {
+    agentEmail: PropTypes.string,
+    agentName: PropTypes.string,
     getValidationMessages: PropTypes.func,
     handleValidation: PropTypes.func,
     isAuthenticated: PropTypes.bool,
@@ -54,7 +56,15 @@ class Form extends Component {
 
     const onValidate = error => {
       if (!error) {
-        this.props.submit(this.getFormData());
+        const { agentName, agentEmail } = this.props;
+
+        const formData = {
+          ...this.getFormData(),
+          agentName,
+          agentEmail,
+        };
+
+        this.props.submit(formData);
       }
     };
 

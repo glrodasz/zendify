@@ -38,10 +38,10 @@ AUTH0_DOMAIN=YOUR_CLIENT_DOMAIN
 ```
 
 ## Roadmap
-* Integrate with Auth0
 * Write JSDocs
 * Order alphabetical the propTypes of the components
 * Write tests
 * Support 100% coverage
 * Create Continuos integration
 * Put badges in the README.md
+* Refactor to use Generators or Async functions
