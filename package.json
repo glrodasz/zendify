@@ -90,7 +90,7 @@
     "redux": "3.5.2",
     "redux-thunk": "2.1.0",
     "spinkit": "1.2.5",
-    "zendesk-node-api": "1.0.3"
+    "zendesk-node-api": "git+https://github.com/Garethderioth/zendesk-node-api.git#feature/load-enviroment-variables"
   },
   "ava": {
     "require": "babel-register",
