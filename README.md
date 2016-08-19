@@ -7,7 +7,7 @@ An mini platform for send tickets into Zendesk.
 3. Put the **SUBDOMAIN**, **USERNAME** and **TOKEN** into the `.env.example` file and rename it into `.env`.
 4. Create an **Auth0** account. You can do it [here](https://manage.auth0.com/login).
 5. Crate a new client in **Clients** menu > **Create client** or modify the default one.
-6. Set the `http://localhost:300` in **Allowed Callback URLs** and **Allowed Origins (CORS)**.
+6. Set the `http://localhost:3000` in **Allowed Callback URLs** and **Allowed Origins (CORS)**.
 7. Get the **CLIENT ID** and **DOMAIN** put them into  the `.env` file as you did it before.
 8. Create a new user in the **Users** menu in order to test it.
 
@@ -38,9 +38,10 @@ AUTH0_DOMAIN=YOUR_CLIENT_DOMAIN
 ```
 
 ## Roadmap
+* Use auth0 for the server api request
+* Write tests
 * Write JSDocs
 * Order alphabetical the propTypes of the components
-* Write tests
 * Support 100% coverage
 * Create Continuos integration
 * Put badges in the README.md
