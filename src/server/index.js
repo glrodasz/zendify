@@ -1,4 +1,5 @@
 import Hapi from 'hapi';
+import Joi from 'joi';
 import consoleOptions from './config/consoleOptions';
 import zendeskNodeApi from './config/zendeskNodeApi';
 import ZendeskService from './service/zendesk';
@@ -48,15 +49,27 @@ server.register([
   server.route({
     method: 'POST',
     path: '/submit',
-    handler(request, reply) {
-      const zendeskService = new ZendeskService(zendeskNodeApi);
+    config: {
+      validate: {
+        payload: Joi.object({
+          agentEmail: Joi.string().email(),
+          agentName: Joi.string(),
+          email: Joi.string().email(),
+          message: Joi.string(),
+          name: Joi.string(),
+          subject: Joi.string(),
+        }),
+      },
+      handler(request, reply) {
+        const zendeskService = new ZendeskService(zendeskNodeApi);
 
-      zendeskService.createTicket(JSON.parse(request.payload))
-        .then(({ result }) => {
-          server.log('info', result && result.url);
-          reply({ message: 'Succesfully sent.' });
-        })
-        .catch(error => server.log('error', error));
+        zendeskService.createTicket(JSON.parse(request.payload))
+          .then(({ result }) => {
+            server.log('info', result && result.url);
+            reply({ message: 'Succesfully sent.' });
+          })
+          .catch(error => server.log('error', error));
+      },
     },
   });
 
