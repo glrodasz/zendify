@@ -5,7 +5,7 @@ import zendeskNodeApi from './config/zendeskNodeApi';
 import ZendeskService from './services/zendesk';
 import connectionParams from './config/connectionParams';
 import ticketScheme from './schemes/ticket';
-import { AUTH0_CLIENT_SECRET } from './utils/env';
+import { AUTH0_CLIENT_SECRET, AUTH0_CLIENT_ID } from './utils/env';
 
 const server = new Hapi.Server();
 
@@ -28,7 +28,10 @@ server.register([{
   // Authentication strategy
   server.auth.strategy('token', 'jwt', {
     key: new Buffer(AUTH0_CLIENT_SECRET, 'base64'),
-    verifyOptions: { algorithms: ['HS256'] },
+    verifyOptions: {
+      algorithms: ['HS256'],
+      audience: AUTH0_CLIENT_ID,
+    },
   });
 
   // Static files
