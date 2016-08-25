@@ -47,12 +47,6 @@ const devtool = () => (
     : 'cheap-module-eval-source-map'
 );
 
-const scssLoader = () => (
-  PRODUCTION
-    ? 'style!css!sass'
-    : 'style!css?sourceMap!sass?sourceMap'
-);
-
 const jsExclude = () => (
   PRODUCTION
     ? [
@@ -107,7 +101,7 @@ export default {
       },
       {
         test: /\.scss$/,
-        loader: scssLoader(),
+        loader: 'style!css?sourceMap!sass?sourceMap',
       },
     ],
     eslint: {
