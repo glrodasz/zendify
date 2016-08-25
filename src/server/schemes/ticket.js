@@ -1,6 +1,6 @@
 import Joi from 'joi';
 
-const submitScheme = Joi.object({
+const ticketScheme = Joi.object({
   agentEmail: Joi.string().email(),
   agentName: Joi.string(),
   email: Joi.string().email(),
@@ -9,4 +9,4 @@ const submitScheme = Joi.object({
   subject: Joi.string(),
 });
 
-export default submitScheme;
+export default ticketScheme;
