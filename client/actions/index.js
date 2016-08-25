@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch';
 import checkStatus from '../utils/checkStatus';
 import { PROMISE_TIMEOUT } from '../utils/constants';
 import auth0Lock from '../utils/config/auth0Lock';
-import AuthService from '../utils/service/auth';
+import AuthService from '../utils/services/auth';
 
 // Login actions
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -50,11 +50,19 @@ const submitFailure = error => ({ type: SUBMIT_FAILURE, error });
 export const submit = data => dispatch => {
   dispatch(submitRequest());
 
+  const authService = new AuthService(auth0Lock);
+
+  // Headers
+  const headers = new Headers({
+    Authorization: `Bearer ${authService.getToken()}`,
+  });
+
+  // Form data
   const body = JSON.stringify(data);
 
   // Handle the timeout of the promise
   const request = Promise.race([
-    fetch('/submit', { method: 'post', body }),
+    fetch('/submit', { method: 'post', headers, body }),
     new Promise((resolve, reject) => {
       setTimeout(() => reject(new Error('Request timeout')), PROMISE_TIMEOUT);
     }),

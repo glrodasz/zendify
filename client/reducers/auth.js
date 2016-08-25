@@ -1,6 +1,6 @@
 import { LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS } from '../actions';
 import auth0Lock from '../utils/config/auth0Lock';
-import AuthService from '../utils/service/auth';
+import AuthService from '../utils/services/auth';
 
 const authService = new AuthService(auth0Lock);
 

@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import { CLIENT_PORT, SERVER_PORT } from './src/common/config/port';
 import PRODUCTION from './src/common/utils/production';
 
+// First we are trying to load the env variables with dontenv.
 try { dotenv.load(); } catch (error) { console.error(error); } // eslint-disable-line
 
 const entry = () => (
