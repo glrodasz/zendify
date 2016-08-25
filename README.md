@@ -27,15 +27,15 @@ An mini platform for send tickets into Zendesk.
 3. Deploy the app as usual with `git push heroku master`. [Learn more](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction).
 
 > \*Environment variables that you need to have on Heroku:
-```bash
-NODE_ENV = production
+```
+NODE_ENV              = production
 NPM_CONFIG_PRODUCTION = false
-ZENDESK_SUBDOMAIN = <YOUR_SUBDOMAIN>
-ZENDESK_TOKEN = <YOUR_ZENDESK_TOKEN>
-ZENDESK_USERNAME = <YOUR_ZENDESK_USERNAME>
-AUTH0_CLIENT_ID = <YOUR_CLIENT_ID>
-AUTH0_CLIENT_SECRET = <YOUR_CLIENT_SECRET>
-AUTH0_DOMAIN = <YOUR_CLIENT_DOMAIN>
+ZENDESK_SUBDOMAIN     = <YOUR_SUBDOMAIN>
+ZENDESK_TOKEN         = <YOUR_ZENDESK_TOKEN>
+ZENDESK_USERNAME      = <YOUR_ZENDESK_USERNAME>
+AUTH0_CLIENT_ID       = <YOUR_CLIENT_ID>
+AUTH0_CLIENT_SECRET   = <YOUR_CLIENT_SECRET>
+AUTH0_DOMAIN          = <YOUR_CLIENT_DOMAIN>
 ```
 
 ## Roadmap
