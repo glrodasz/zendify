@@ -1,6 +1,5 @@
-/* eslint-disable global-require */
 import Hapi from 'hapi';
-import consoleOptions from './config/consoleOptions';
+import plugins from './config/plugins';
 import zendeskNodeApi from './config/zendeskNodeApi';
 import ZendeskService from './services/zendesk';
 import connectionParams from './config/connectionParams';
@@ -11,15 +10,8 @@ const server = new Hapi.Server();
 
 server.connection(connectionParams());
 
-// Register the console and inert modules
-server.register([{
-  register: require('good'),
-  options: consoleOptions,
-}, {
-  register: require('inert'),
-}, {
-  register: require('hapi-auth-jwt'),
-}], (regErr) => {
+// Register plugins
+server.register(plugins, (regErr) => {
   // Log register errors
   if (regErr) {
     server.log('error', regErr);
@@ -57,15 +49,11 @@ server.register([{
   // Submit ticket
   server.route({
     method: 'POST',
-    path: '/submit',
+    path: '/ticket',
     handler(request, reply) {
-      const zendeskService = new ZendeskService(zendeskNodeApi);
-
-      zendeskService.createTicket(JSON.parse(request.payload))
-        .then(({ result }) => {
-          server.log('info', result && result.url);
-          reply({ message: 'Succesfully sent.' });
-        })
+      new ZendeskService(zendeskNodeApi)
+        .createTicket(JSON.parse(request.payload))
+        .then(() => reply({ message: 'Succesfully sent.' }))
         .catch(error => server.log('error', error));
     },
     config: {

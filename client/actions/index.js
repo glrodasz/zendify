@@ -62,7 +62,7 @@ export const submit = data => dispatch => {
 
   // Handle the timeout of the promise
   const request = Promise.race([
-    fetch('/submit', { method: 'post', headers, body }),
+    fetch('/ticket', { method: 'post', headers, body }),
     new Promise((resolve, reject) => {
       setTimeout(() => reject(new Error('Request timeout')), PROMISE_TIMEOUT);
     }),
