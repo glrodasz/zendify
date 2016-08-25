@@ -39,7 +39,6 @@ AUTH0_DOMAIN = <YOUR_CLIENT_DOMAIN>
 ```
 
 ## Roadmap
-* Use auth0 for the server api request
 * Write tests
 * Write JSDocs
 * Order alphabetical the propTypes of the components
