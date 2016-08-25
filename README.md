@@ -2,31 +2,31 @@
 An mini platform for send tickets into Zendesk.
 
 ## Setup
-1. Create a **Zendesk** account. You can do it  [here](https://www.zendesk.com/register/#getstarted).
-2. Create a new token. For that go to the **Admin** panel > **Channels** > **API**.
-3. Put the **SUBDOMAIN**, **USERNAME** and **TOKEN** into the `.env.example` file and rename it into `.env`.
-4. Create an **Auth0** account. You can do it [here](https://manage.auth0.com/login).
+1. Create a [**Zendesk**](https://www.zendesk.com/register/#getstarted) account.
+2. Create a new token in **Admin** panel > **Channels** > **API**.
+3. Put the **SUBDOMAIN**\*, **USERNAME**, and **TOKEN** into the `.env.example` file and rename it for `.env`.
+4. Create an [**Auth0**](https://manage.auth0.com/login) account.
 5. Crate a new client in **Clients** menu > **Create client** or modify the default one.
-6. Set the `http://localhost:3000` in **Allowed Callback URLs** and **Allowed Origins (CORS)**.
-7. Get the **CLIENT ID** and **DOMAIN** put them into  the `.env` file as you did it before.
-8. Create a new user in the **Users** menu in order to test it.
+6. Set `http://localhost:3000` in **Allowed Callback URLs** and **Allowed Origins (CORS)**.
+7. Get the **CLIENT ID**, **CLIENT SECRET**, and **DOMAIN** then put them into  the `.env` file as you did it before.
+8. Create a new user in **Users** menu for test it.
 
-> The **SUBDOMAIN** is the subdomain part of your `https://<SUBDOMAIN>.zendesk.com/` URL.
+> \*The **SUBDOMAIN** is the subdomain part of your `https://<SUBDOMAIN>.zendesk.com/` URL.
 
 ## Development
 1. Follow the **Setup** steps above.
 2. Install the dependencies running `npm install`.
 3. Start the development mode running `npm run dev`.
-4. Open the browser at `http://localhost:3000` for watch the changes.
+4. Open the browser at `http://localhost:3000`.
 
-> The development mode start the server listening its changes with `nodemon` also it is listening the client with `webpack-dev-server` that have integrated the **Hot Module Replacement**. Learn more about HRM [here](https://github.com/webpack/docs/wiki/hot-module-replacement-with-webpack).
+> The development mode starts the server listening its changes with `nodemon`. Also, it is listening the client changes with `webpack-dev-server` that have integrated the **HMR**. Learn more about [HRM](https://github.com/webpack/docs/wiki/hot-module-replacement-with-webpack).
 
 ## Deploy to Heroku
-1. Follow the **Setup** steps above but instead of put the keys and tokens on the `.env` file you have to add them on Heroku.
-2. Add them as enviroment variables in the **Settings** tab > **Reveal Config Vars** button on the you Heroku app.
-3. Deploy the app as usual. `git push heroku master`.
+1. Follow the **Setup** steps above but instead of put the tokens in the `.env` file you have to add them on Heroku\* and in the step 6 add your *herokuapp* domain.
+2. Add them as enviroment variables in **Settings** tab > **Reveal Config Vars** button.
+3. Deploy the app as usual with `git push heroku master`. [Learn more](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction).
 
-> Environment variables that you need to have on Heroku:
+> \*Environment variables that you need to have on Heroku:
 ```bash
 NODE_ENV = production
 NPM_CONFIG_PRODUCTION = false
@@ -39,10 +39,10 @@ AUTH0_DOMAIN = <YOUR_CLIENT_DOMAIN>
 ```
 
 ## Roadmap
-* Write tests
-* Write JSDocs
-* Order alphabetical the propTypes of the components
-* Support 100% coverage
-* Create Continuos integration
-* Put badges in the README.md
-* Refactor to use Generators or Async functions
+- [ ] Write client and server tests.
+- [ ] Write JSDocs, order alphabetical the propTypes, and review the default props.
+- [ ] Support 80% of general coverage.
+- [ ] Create a Continuos integration with Travis and Codecov.
+- [ ] Create the badges of CI and coverage.
+- [ ] Refactor to use async functions.
+- [ ] Refactor to use the async action as an API middleware.
