@@ -62,7 +62,8 @@ class ZendeskService {
    * @return {Promise} - A promise with the found agent
    */
   searchAgent(email) {
-    return this.api.search.list(`query=type:user email:${email}`);
+    return this.api.search
+      .list(`query=type:user role:agent role:admin email:${email}`);
   }
 }
 
