@@ -24,6 +24,11 @@ class Form extends Component {
     validate: PropTypes.func,
   }
 
+  static defaulProps = {
+    isLoading: false,
+    isFulfilled: false,
+  }
+
   constructor(props) {
     super(props);
 

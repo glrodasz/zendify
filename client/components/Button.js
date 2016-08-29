@@ -12,6 +12,11 @@ class Button extends Component {
     handleClick: PropTypes.func,
   }
 
+  static defaultProps = {
+    isLoading: false,
+    isDisabled: false,
+  };
+
   constructor(props) {
     super(props);
 
