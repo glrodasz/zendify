@@ -99,7 +99,7 @@
     "redux-thunk": "2.1.0",
     "sinon": "1.17.5",
     "spinkit": "1.2.5",
-    "zendesk-node-api": "git+https://github.com/Garethderioth/zendesk-node-api.git#feature/load-enviroment-variables"
+    "zendesk-node-api": "git+https://github.com/garethderioth/zendesk-node-api.git"
   },
   "ava": {
     "require": [

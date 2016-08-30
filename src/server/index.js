@@ -52,7 +52,7 @@ server.register(plugins, (regErr) => {
     path: '/ticket',
     handler(request, reply) {
       new ZendeskService(zendeskNodeApi)
-        .createTicket(JSON.parse(request.payload))
+        .createTicket(request.payload)
         .then(() => reply({ message: 'Succesfully sent.' }))
         .catch(error => server.log('error', error));
     },
