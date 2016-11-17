@@ -91,7 +91,7 @@
     "redux": "3.5.2",
     "redux-thunk": "2.1.0",
     "spinkit": "1.2.5",
-    "zendesk-node-api": "git+https://github.com/garethderioth/zendesk-node-api.git"
+    "zendesk-node-api": "1.2.0"
   },
   "ava": {
     "require": "babel-register",
