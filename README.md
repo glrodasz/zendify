@@ -37,12 +37,3 @@ AUTH0_CLIENT_ID       = <YOUR_CLIENT_ID>
 AUTH0_CLIENT_SECRET   = <YOUR_CLIENT_SECRET>
 AUTH0_DOMAIN          = <YOUR_CLIENT_DOMAIN>
 ```
-
-## Roadmap
-- [ ] Write client and server tests.
-- [ ] Write JSDocs, order alphabetical the propTypes, and review the default props.
-- [ ] Support 80% of general coverage.
-- [ ] Create a Continuos integration with Travis and Codecov.
-- [ ] Create the badges of CI and coverage.
-- [ ] Refactor to use async functions.
-- [ ] Refactor to use the async action as an API middleware.
