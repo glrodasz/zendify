@@ -10,7 +10,7 @@
     "build:client": "cross-env NODE_ENV=production webpack",
     "build:src": "babel src -d dist",
     "build": "npm run build:client && npm run build:src",
-    "check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
+    "check-coverage": "nyc check-coverage --statements 60 --branches 60 --functions 60 --lines 60",
     "clean:build": "rm -rf dist public",
     "commit": "git-cz",
     "cover": "nyc npm run test",
