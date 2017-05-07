@@ -19,7 +19,7 @@ server.register(plugins, (regErr) => {
 
   // Authentication strategy
   server.auth.strategy('token', 'jwt', {
-    key: new Buffer(AUTH0_CLIENT_SECRET, 'base64'),
+    key: AUTH0_CLIENT_SECRET,
     verifyOptions: {
       algorithms: ['HS256'],
       audience: AUTH0_CLIENT_ID,
