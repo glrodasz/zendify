@@ -1,5 +1,5 @@
 # Zendify
-An mini platform for send tickets into Zendesk as a agent in behalf of the customer.
+An mini platform for sending tickets into Zendesk as an agent in behalf of the customer.
 
 ## Setup
 1. Create a [**Zendesk**](https://www.zendesk.com/register/#getstarted) account.
@@ -39,4 +39,4 @@ AUTH0_DOMAIN          = <YOUR_CLIENT_DOMAIN>
 ```
 
 ## Notes
-The user that log in in the application should have the same email that have in Zendesk as agent.
+The user that logs into the application should have the same email that it has as a Zendesk agent.
