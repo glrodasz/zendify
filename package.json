@@ -26,18 +26,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Garethderioth/zendify.git"
+    "url": "git+https://github.com/glrodasz/zendify.git"
   },
   "keywords": [
     "zendesk",
     "auth0"
   ],
-  "author": "Guillermo Rodas <garethderioth@gmail.com> (http://guillermorodas.com/)",
+  "author": "Guillermo Rodas (http://guillermorodas.com/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Garethderioth/zendify/issues"
+    "url": "https://github.com/glrodasz/zendify/issues"
   },
-  "homepage": "https://github.com/Garethderioth/zendify#readme",
+  "homepage": "https://github.com/glrodasz/zendify#readme",
   "devDependencies": {
     "ava": "0.17.0",
     "babel-cli": "6.11.4",
