@@ -90,7 +90,7 @@
     "joi-validation-strategy": "0.3.3",
     "jsdom": "9.4.2",
     "jwt-decode": "2.1.0",
-    "moment": "2.19.3",
+    "moment": "2.29.2",
     "normalize-scss": "5.0.3",
     "react": "16.5.0",
     "react-dom": "15.3.0",
