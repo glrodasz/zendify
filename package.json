@@ -74,7 +74,7 @@
     "webpack-dev-server": "1.14.1"
   },
   "dependencies": {
-    "auth0-lock": "11.28.1",
+    "auth0-lock": "12.0.0",
     "breakpoint-sass": "2.7.0",
     "classnames": "2.2.5",
     "cross-env": "3.1.3",
@@ -88,7 +88,7 @@
     "joi": "9.0.4",
     "joi-browser": "9.0.4",
     "joi-validation-strategy": "0.3.3",
-    "jsdom": "9.4.2",
+    "jsdom": "16.6.0",
     "jwt-decode": "2.1.0",
     "moment": "2.19.3",
     "normalize-scss": "5.0.3",
